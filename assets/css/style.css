@@ -1,0 +1,465 @@
+:root {
+  --bg: #ffffff;
+  --bg-alt: #f5f5f5;
+  --text: #111111;
+  --text-muted: #555555;
+  --border: #dddddd;
+  --accent: #111111;
+  --accent-hover: #333333;
+  --card-bg: #ffffff;
+  --nav-bg: rgba(255, 255, 255, 0.95);
+  --shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+  --bento-card-bg: #f8f9fa;
+  --bento-card-border: rgba(0, 0, 0, 0.08);
+  --bento-card-hover-border: rgba(0, 0, 0, 0.2);
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-xxl: 5rem;
+}
+
+body.dark {
+  --bg: #111111;
+  --bg-alt: #1a1a1a;
+  --text: #f0f0f0;
+  --text-muted: #aaaaaa;
+  --border: #2e2e2e;
+  --accent: #f0f0f0;
+  --accent-hover: #cccccc;
+  --card-bg: #1e1e1e;
+  --nav-bg: rgba(17, 17, 17, 0.97);
+  --shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+  --bento-card-bg: #1e1e1e;
+  --bento-card-border: #2e2e2e;
+  --bento-card-hover-border: #444444;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  transition: background-color 0.3s, color 0.3s;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =====================
+   NAVBAR
+===================== */
+#mainNav {
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background 0.3s, padding 0.3s, box-shadow 0.3s;
+  z-index: 1050;
+}
+
+#mainNav .navbar-brand {
+  color: var(--text);
+  letter-spacing: 2px;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+#mainNav .nav-link {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  padding: 0.5rem 0.8rem;
+}
+
+#mainNav .nav-link:hover,
+#mainNav .nav-link.active {
+  color: var(--text);
+}
+
+#darkToggle {
+  background: none !important;
+  border: 1px solid var(--border) !important;
+  color: var(--text) !important;
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+  line-height: 1;
+  transition: background 0.2s;
+}
+
+#darkToggle:hover {
+  background: var(--bg-alt) !important;
+}
+
+#darkToggle:focus {
+  outline: none;
+  box-shadow: none !important;
+}
+
+/* =====================
+   HERO / INTRO SECTION
+===================== */
+#hero {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(var(--space-xxl) + 30px);
+  padding-bottom: var(--space-xl);
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+}
+
+#hero::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(150, 150, 150, 0.08) 0%, transparent 50%);
+  transform: translate(calc(var(--mouse-x) * -25px), calc(var(--mouse-y) * -25px));
+  transition: transform 0.1s ease-out;
+  pointer-events: none;
+  z-index: 0;
+}
+
+#hero > .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-subtitle {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.hero-title {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  margin-bottom: 12px;
+}
+
+.hero-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  margin: 0 auto 2rem;
+}
+
+.divider {
+  width: 40px;
+  height: 3px;
+  background: var(--text);
+  margin: 0 auto 2rem;
+  border-radius: 2px;
+}
+
+/* =====================
+   BUTTONS
+===================== */
+.btn-primary-custom {
+  background: var(--accent);
+  color: var(--bg);
+  border: 2px solid var(--accent);
+  padding: 8px 22px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-primary-custom:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--bg);
+}
+
+.btn-outline-custom {
+  background: transparent;
+  color: var(--text);
+  border: 2px solid var(--border);
+  padding: 8px 22px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: border-color 0.2s, color 0.2s, background-color 0.2s;
+}
+
+.btn-outline-custom:hover {
+  border-color: var(--text);
+  color: var(--text);
+  background-color: var(--bg-alt);
+}
+
+/* =====================
+   HERO PROJECT CARDS
+===================== */
+.hero-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 1.25rem;
+  padding: 1.75rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-card:hover {
+  border-color: rgba(150, 150, 150, 0.3);
+}
+
+.hero-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero-card-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
+.tag-active {
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.tag-locked {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+}
+
+.hero-card-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+}
+
+.hero-card-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
+
+/* =====================
+   BENTO-A1 GRID IN HERO CARD 1
+===================== */
+.bento-wrapper {
+  width: 100%;
+}
+
+.bento-box {
+  background-color: var(--bento-card-bg);
+  border: 1px solid var(--bento-card-border);
+  border-radius: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  padding: 1rem;
+}
+
+.bento-box:hover {
+  transform: translateY(-2px);
+  border-color: var(--bento-card-hover-border);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+body.dark .bento-box:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+}
+
+.bento-box-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.bento-box-desc {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* =====================
+   LOCKED PROJECT CARDS (CARDS 2, 3, 4)
+===================== */
+.locked-project-card {
+  min-height: 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.locked-empty-state {
+  flex: 1;
+  min-height: 220px;
+  border: 2px dashed var(--border);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(125, 125, 125, 0.03) 0%, rgba(125, 125, 125, 0.01) 100%);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.locked-empty-state:hover {
+  border-color: rgba(150, 150, 150, 0.4);
+}
+
+.lock-icon-circle {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: var(--text-muted);
+  margin-bottom: 1.25rem;
+  box-shadow: var(--shadow);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.locked-empty-state:hover .lock-icon-circle {
+  transform: scale(1.08);
+  color: var(--text);
+}
+
+.locked-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.locked-desc {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  max-width: 260px;
+  margin-bottom: 0;
+  line-height: 1.5;
+}
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+  margin-top: auto;
+  background: var(--bg-alt);
+  border-top: 1px solid var(--border);
+  padding: 24px 0;
+}
+
+footer p {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* =====================
+   ANIMATIONS & RESPONSIVENESS
+===================== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 991px) {
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  .locked-project-card {
+    min-height: 320px;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .hero-card {
+    padding: 1.25rem;
+  }
+
+  .bento-box {
+    min-height: 120px !important;
+  }
+}

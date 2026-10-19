@@ -1,80 +1,286 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bootstrap demo</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RHA · WebDev Projects</title>
 
-  <style>
-    .card {
-      min-height: 180px;
-    }
-  </style>
+  <!-- Portfolio Favicon & Logo -->
+  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Bootstrap 5.3 & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet" />
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css" />
 </head>
 
-<body>
-  
-  <div class="container">
-    <div class="row">
-      <div class="col-3">
-        <div class="card">
-          CARD 1
-        </div>
-        <div class="card">
-          CAED 7
-        </div>
-        <div class="row">
-          <div class="col-6" gx-5>
-            <div class="card" style="height: 150px;">
-              CARD
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="card" style="height: 150px;">
-              CARD
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-9">
-        <div class="row">
-          <div class="col-9">
-            <div class="row">
-              <div class="col-6">
-                <div class="card">
-                  CARD 2
-                </div>
-              </div>
-              <div class="col-6">
-                <div class="card">
-                  CARD 3
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-12">
-                <div class="card" style="height: 300px;">
-                  CARD 5
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-3 ">
-            <div class="card">
-              CARD 3
-            </div>
-          </div>
-        </div>
+<body class="dark">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg fixed-top" id="mainNav">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="#">
+        <img src="assets/img/favicon.png" alt="RHA Logo" class="brand-icon" />
+        RHA
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto gap-lg-2">
+          <li class="nav-item">
+            <a class="nav-link active" href="#hero">Overview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#hero-projects">Hero Cards</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="bento-A1/index.html">Bento-A1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../Portfolio/index.html" target="_blank">
+              <i class="bi bi-box-arrow-up-right me-1"></i>Main Portfolio
+            </a>
+          </li>
+        </ul>
+
+        <!-- Dark/Light Mode Switcher -->
+        <button class="btn btn-sm ms-lg-3 mt-2 mt-lg-0" id="darkToggle" title="Toggle dark mode">
+          <i class="bi bi-sun-fill"></i>
+        </button>
       </div>
     </div>
-  </div>
+  </nav>
 
-  <script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
-    crossorigin="anonymous"></script>
+  <!-- HERO SECTION -->
+  <section id="hero">
+    <div class="container text-center">
+      <p class="hero-subtitle fade-in-up">Front-End Development Showcase</p>
+      <h1 class="hero-title fade-in-up">WebDev Project Lab</h1>
+      <div class="divider fade-in-up"></div>
+      <p class="hero-desc fade-in-up">
+        A curated collection of modular front-end layouts and experimental UI interfaces. Explore featured builds and upcoming releases below.
+      </p>
+      <div class="d-flex justify-content-center gap-3 fade-in-up">
+        <a href="#hero-projects" class="btn btn-primary-custom">
+          <i class="bi bi-grid-fill"></i> View Hero Cards
+        </a>
+        <a href="bento-A1/index.html" class="btn btn-outline-custom">
+          <i class="bi bi-layout-sidebar-inset"></i> Bento-A1 Standalone
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 HERO CARDS SECTION -->
+  <section id="hero-projects" class="pt-0">
+    <div class="container">
+      
+      <!-- HERO CARD 1: BENTO-A1 (Active Project) -->
+      <div class="row mb-5">
+        <div class="col-12">
+          <div class="hero-card fade-in-up">
+            
+            <!-- Hero Card Header -->
+            <div class="hero-card-header">
+              <div>
+                <span class="hero-card-tag tag-active mb-2">
+                  <i class="bi bi-check-circle-fill"></i> Unlocked · Active
+                </span>
+                <h3 class="hero-card-title">Bento-A1 </h3>
+                <p class="hero-card-subtitle">
+                  Synchronized multi-column layout using pure Bootstrap row &amp; column hierarchy.
+                </p>
+              </div>
+              <div class="d-flex gap-2">
+                <a href="bento-A1/index.html" class="btn btn-outline-custom btn-sm">
+                  <i class="bi bi-arrows-fullscreen"></i> Fullscreen
+                </a>
+              </div>
+            </div>
+
+            <!-- Bento-A1 Layout -->
+            <div class="bento-wrapper">
+              <div class="row g-3">
+                
+                <!-- LEFT COLUMN: col-3 -->
+                <div class="col-12 col-lg-3 d-flex flex-column gap-3">
+                  <!-- Card 1 -->
+                  <div class="bento-box" style="height: 150px;">
+                    <div class="bento-box-title">CARD 1</div>
+                    <div class="bento-box-desc">Telemetry &amp; Overview</div>
+                  </div>
+
+                  <!-- Card 2 -->
+                  <div class="bento-box" style="height: 150px;">
+                    <div class="bento-box-title">CARD 2</div>
+                    <div class="bento-box-desc">Performance Metrics</div>
+                  </div>
+
+                  <!-- Nested mini row for two small cards -->
+                  <div class="row g-3">
+                    <div class="col-6">
+                      <div class="bento-box" style="height: 150px;">
+                        <div class="bento-box-title">CARD 3A</div>
+                        <div class="bento-box-desc">Network</div>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                      <div class="bento-box" style="height: 150px;">
+                        <div class="bento-box-title">CARD 3B</div>
+                        <div class="bento-box-desc">Uptime</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- RIGHT COLUMN: col-9 -->
+                <div class="col-12 col-lg-9">
+                  <div class="row g-3">
+                    
+                    <!-- Inner Left: col-9 -->
+                    <div class="col-12 col-lg-9">
+                      <!-- Top sub-row -->
+                      <div class="row g-3 mb-3">
+                        <div class="col-6">
+                          <div class="bento-box" style="height: 150px;">
+                            <div class="bento-box-title">CARD 4</div>
+                            <div class="bento-box-desc">Traffic Distribution</div>
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <div class="bento-box" style="height: 150px;">
+                            <div class="bento-box-title">CARD 5</div>
+                            <div class="bento-box-desc">Database Status</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <!-- Bottom sub-row (wide card: 150px + 16px + 150px = 316px) -->
+                      <div class="row g-3">
+                        <div class="col-12">
+                          <div class="bento-box" style="height: 316px;">
+                            <div class="bento-box-title fs-5">CARD 6</div>
+                            <div class="bento-box-desc">Primary Analytics &amp; Real-time Visualizer Panel</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Inner Right: col-3 (Tall card spanning full height) -->
+                    <div class="col-12 col-lg-3">
+                      <div class="bento-box h-100" style="min-height: 180px;">
+                        <div class="bento-box-title">CARD 7</div>
+                        <div class="bento-box-desc">Live Activity Feed</div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- ROW OF 3 LOCKED HERO CARDS -->
+      <div class="row g-4">
+        
+        <!-- HERO CARD 2: LOCKED PROJECT -->
+        <div class="col-12 col-lg-4">
+          <div class="hero-card locked-project-card fade-in-up">
+            <div class="hero-card-header">
+              <div>
+                <span class="hero-card-tag tag-locked mb-2">
+                  <i class="bi bi-lock-fill"></i> Locked
+                </span>
+                <h4 class="hero-card-title fs-5">12</h4>
+              </div>
+            </div>
+
+            <!-- Empty Locked State -->
+            <div class="locked-empty-state">
+              <div class="lock-icon-circle">
+                <i class="bi bi-lock-fill"></i>
+              </div>
+              <h5 class="locked-title">LOCKED PROJECTS</h5>
+              <p class="locked-desc">Under development · Confidential interface preview coming soon.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- HERO CARD 3: LOCKED PROJECT -->
+        <div class="col-12 col-lg-4">
+          <div class="hero-card locked-project-card fade-in-up">
+            <div class="hero-card-header">
+              <div>
+                <span class="hero-card-tag tag-locked mb-2">
+                  <i class="bi bi-lock-fill"></i> Locked
+                </span>
+                <h4 class="hero-card-title fs-5">A3</h4>
+              </div>
+            </div>
+
+            <!-- Empty Locked State -->
+            <div class="locked-empty-state">
+              <div class="lock-icon-circle">
+                <i class="bi bi-lock-fill"></i>
+              </div>
+              <h5 class="locked-title">LOCKED PROJECTS</h5>
+              <p class="locked-desc">Under development · Confidential interface preview coming soon.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- HERO CARD 4: LOCKED PROJECT -->
+        <div class="col-12 col-lg-4">
+          <div class="hero-card locked-project-card fade-in-up">
+            <div class="hero-card-header">
+              <div>
+                <span class="hero-card-tag tag-locked mb-2">
+                  <i class="bi bi-lock-fill"></i> Locked
+                </span>
+                <h4 class="hero-card-title fs-5">A4</h4>
+              </div>
+            </div>
+
+            <!-- Empty Locked State -->
+            <div class="locked-empty-state">
+              <div class="lock-icon-circle">
+                <i class="bi bi-lock-fill"></i>
+              </div>
+              <h5 class="locked-title">LOCKED PROJECTS</h5>
+              <p class="locked-desc">Under development · Confidential interface preview coming soon.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container text-center">
+      <p>&copy; 2026 Rhendel H. Ancheta · WebDev Projects Hub</p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3 Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Custom Script -->
+  <script src="assets/js/script.js"></script>
 </body>
 
 </html>
