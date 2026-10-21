@@ -3,33 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agent Showcase · JSON-A2</title>
+  <title>Agent Calling Cards · JSON-A2</title>
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
 
-  <!-- Google Font: Inter -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Google Font: Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
   <style>
     :root {
-      --bg-dark-1: #070d1e;
-      --bg-dark-2: #0d1a38;
-      --bg-dark-3: #12234d;
-      --card-bg: #111d3b;
-      --card-active-bg: #15254d;
-      --card-border: #1f3363;
-      --card-active-border: #3b82f6;
-      --card-hover-border: #2e4a8a;
-      --text-white: #ffffff;
-      --text-gray: #94a3b8;
+      --bg-main: #0c0e12;
+      --bg-header: #101217;
+      --bg-surface: #14161d;
+      --card-bg: #161820;
+      --card-hover-bg: #1a1d27;
+      --card-art-bg: #101218;
+      --border-subtle: #222632;
+      --border-card: #1f232d;
+      --border-input: #262a38;
+      --text-primary: #f3f4f6;
+      --text-secondary: #a0aec0;
+      --text-muted: #6b7280;
       --primary-blue: #3b82f6;
-      --picker-bg: #0e1935;
-      --picker-border: #1e315e;
-      --picker-active: #3b82f6;
+      --font-body: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-number: Arial, Helvetica, sans-serif;
     }
 
     * {
@@ -39,23 +42,28 @@
     }
 
     body {
-      background: linear-gradient(135deg, var(--bg-dark-1) 0%, var(--bg-dark-2) 50%, var(--bg-dark-3) 100%);
-      color: var(--text-white);
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg-main);
+      background-image: linear-gradient(180deg, #111319 0%, #0b0d11 100%);
+      color: var(--text-primary);
+      font-family: var(--font-body);
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Top Navigation */
+    /* Top Navigation (Minimalist Dark Grey) */
     .top-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.1rem 2.25rem;
-      background: #091329;
-      border-bottom: 1px solid #1a2a50;
+      padding: 1rem 2rem;
+      background: var(--bg-header);
+      border-bottom: 1px solid var(--border-subtle);
+      position: sticky;
+      top: 0;
+      z-index: 50;
     }
 
     .brand-link {
@@ -63,22 +71,23 @@
       align-items: center;
       gap: 0.75rem;
       text-decoration: none;
-      color: var(--text-white);
+      color: var(--text-primary);
     }
 
     .brand-tag {
-      font-size: 0.75rem;
+      font-family: var(--font-number);
+      font-size: 0.72rem;
       font-weight: 700;
-      padding: 0.25rem 0.6rem;
-      background: #1e293b;
-      border: 1px solid #334155;
-      border-radius: 6px;
-      color: var(--primary-blue);
-      text-transform: uppercase;
+      padding: 0.2rem 0.55rem;
+      background: #181b24;
+      border: 1px solid #282c3a;
+      border-radius: 4px;
+      color: #93c5fd;
+      letter-spacing: 0.05em;
     }
 
     .brand-title {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 700;
       letter-spacing: -0.01em;
     }
@@ -87,146 +96,263 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      color: var(--text-gray);
+      color: var(--text-secondary);
       text-decoration: none;
-      font-size: 0.88rem;
+      font-size: 0.82rem;
       font-weight: 600;
-      padding: 0.5rem 1rem;
-      background: #0f1b38;
-      border: 1px solid #1f3363;
-      border-radius: 8px;
+      padding: 0.45rem 0.85rem;
+      background: #141720;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
       transition: all 0.2s ease;
     }
 
     .back-btn:hover {
-      color: var(--text-white);
-      background: #172852;
-      border-color: var(--primary-blue);
+      color: var(--text-primary);
+      background: #1c202c;
+      border-color: #353a4b;
     }
 
     /* Main Container */
-    .main-content {
+    .main-container {
       flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      max-width: 1400px;
+      max-width: 1350px;
       margin: 0 auto;
       width: 100%;
-      padding: 1.5rem 1.25rem 1.25rem;
-      gap: 1.5rem;
+      padding: 2.25rem 1.5rem 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
     }
 
-    /* 5 CARDS CAROUSEL (Flat 2D layout matching mockup) */
-    .carousel-wrapper {
+    /* Header Section */
+    .catalog-header {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .header-text-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .catalog-title {
+      font-size: 1.75rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--text-primary);
+    }
+
+    .catalog-subtitle {
+      font-size: 0.88rem;
+      font-weight: 400;
+      color: var(--text-secondary);
+      margin-top: 0.25rem;
+    }
+
+    .agent-counter-badge {
+      font-family: var(--font-number);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      background: #141720;
+      border: 1px solid var(--border-subtle);
+      padding: 0.35rem 0.85rem;
+      border-radius: 5px;
+      letter-spacing: 0.02em;
+    }
+
+    /* Controls Bar: Search, Filters & Sort */
+    .controls-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .search-input-wrapper {
       position: relative;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      margin: auto 0;
+      flex: 1;
+      min-width: 250px;
+      max-width: 400px;
     }
 
-    .cards-track {
+    .search-input-wrapper i {
+      position: absolute;
+      left: 0.9rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .search-input {
+      width: 100%;
+      background: #11131a;
+      border: 1px solid var(--border-input);
+      border-radius: 8px;
+      padding: 0.6rem 2.2rem 0.6rem 2.4rem;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
+    }
+
+    .search-input::placeholder {
+      color: var(--text-muted);
+      font-family: var(--font-body);
+    }
+
+    .search-input:focus {
+      border-color: #3f4559;
+      background: #141722;
+    }
+
+    .clear-search-btn {
+      position: absolute;
+      right: 0.75rem;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      cursor: pointer;
+      display: none;
+    }
+
+    .clear-search-btn:hover {
+      color: var(--text-primary);
+    }
+
+    /* Filter & Sort Group */
+    .filter-sort-group {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .filter-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .filter-pill {
+      background: #141720;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      font-family: var(--font-body);
+      font-size: 0.78rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      user-select: none;
+    }
+
+    .filter-pill:hover {
+      background: #1a1e2a;
+      color: var(--text-primary);
+      border-color: #323748;
+    }
+
+    .filter-pill.active {
+      background: #252b3b;
+      border-color: #3b435b;
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Sort Dropdown */
+    .sort-wrapper {
       display: flex;
       align-items: center;
-      justify-content: center;
+      gap: 0.4rem;
+      background: #141720;
+      border: 1px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 0.25rem 0.6rem 0.25rem 0.7rem;
+    }
+
+    .sort-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .sort-select {
+      background: transparent;
+      border: none;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      outline: none;
+      cursor: pointer;
+      padding: 0.2rem 0.2rem;
+    }
+
+    .sort-select option {
+      background: #141720;
+      color: var(--text-primary);
+      font-family: var(--font-body);
+    }
+
+    /* 3 CARDS PER ROW GRID */
+    .agents-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1.25rem;
       width: 100%;
     }
 
-    /* Standard Card (Flat rounded rectangle) */
-    .card-item {
-      position: relative;
-      width: 200px;
-      height: 420px;
+    /* HORIZONTAL CALLING CARD (UNIFORM BORDER - NO STRIPES) */
+    .agent-card {
       background: var(--card-bg);
-      border: 1.5px solid var(--card-border);
-      border-radius: 22px;
-      cursor: pointer;
+      border: 1px solid var(--border-card); /* Uniform subtle border */
+      border-radius: 12px;
       overflow: hidden;
       display: flex;
-      flex-direction: column;
-      transition: transform 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
-      user-select: none;
+      flex-direction: row;
+      height: 175px; /* Clean spacious calling card proportion */
+      cursor: pointer;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+      position: relative;
     }
 
-    /* Side Cards Scaling (Flat 2D) */
-    .card-item.side-far {
-      width: 180px;
-      height: 380px;
-      opacity: 0.35;
-      transform: scale(0.85);
+    .agent-card:hover {
+      transform: translateY(-3px);
+      background-color: var(--card-hover-bg);
+      border-color: #2e3444;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
     }
 
-    .card-item.side-near {
-      width: 195px;
-      height: 410px;
-      opacity: 0.7;
-      transform: scale(0.95);
-    }
-
-    .card-item:hover:not(.center-active) {
-      opacity: 0.95;
-      border-color: var(--card-hover-border);
-      transform: scale(0.98);
-    }
-
-    /* Center Card (Enlarged, Focus) */
-    .card-item.center-active {
-      width: 320px;
-      height: 520px;
-      background: var(--card-active-bg);
-      border: 2px solid var(--card-active-border);
-      border-radius: 26px;
-      opacity: 1;
-      transform: scale(1.05);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(59, 130, 246, 0.25);
-      cursor: default;
-      z-index: 5;
-    }
-
-    /* Card Top Header */
-    .card-header-bar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.9rem 1.2rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .role-badge {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #60a5fa;
-      background: #0f1c3a;
-      padding: 0.25rem 0.6rem;
-      border-radius: 6px;
-      border: 1px solid #1e3568;
-    }
-
-    .agent-extra-badge {
-      font-size: 0.72rem;
-      font-weight: 600;
-      color: var(--text-gray);
-    }
-
-    /* Card Visual / Placeholder Body */
-    .card-visual-area {
-      flex: 1;
+    /* Left Side: Calling Card Artwork Banner */
+    .card-banner-art {
+      flex: 0 0 135px;
+      position: relative;
+      background: var(--card-art-bg);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      position: relative;
-      background: #0c1630;
       overflow: hidden;
-      padding: 1.5rem;
-      text-align: center;
+      border-right: 1px solid var(--border-card);
     }
 
-    .card-img-element {
+    .card-image-display {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -235,315 +361,143 @@
       display: none;
     }
 
-    .card-img-element.active {
+    .card-image-display.active {
       display: block;
     }
 
-    .placeholder-content {
+    .banner-fallback {
       display: flex;
       flex-direction: column;
-      align-items: center;
-      gap: 0.6rem;
-      pointer-events: none;
-    }
-
-    .placeholder-initial {
-      font-size: 4.2rem;
-      font-weight: 800;
-      color: rgba(255, 255, 255, 0.15);
-      line-height: 1;
-    }
-
-    .placeholder-text {
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--text-gray);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    /* Card Bottom Info */
-    .card-footer-info {
-      padding: 1.15rem 1.25rem;
-      background: #0f1a35;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-    }
-
-    .agent-name-title {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: var(--text-white);
-      line-height: 1.1;
-      text-transform: uppercase;
-    }
-
-    .center-active .agent-name-title {
-      font-size: 1.85rem;
-    }
-
-    .agent-desc-tag {
-      font-size: 0.8rem;
-      color: var(--text-gray);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-top: 2px;
-    }
-
-    /* Center Card: Quote Button */
-    .quote-action-btn {
-      display: none;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      width: 100%;
-      padding: 0.55rem;
-      background: #1e3a8a;
-      border: 1px solid #3b82f6;
-      border-radius: 8px;
-      color: var(--text-white);
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.2s ease;
-    }
-
-    .center-active .quote-action-btn {
-      display: flex;
-    }
-
-    .quote-action-btn:hover {
-      background: #2563eb;
-    }
-
-    /* "SEARCH YOUR AGENT HERE" PILL (Exact wireframe element) */
-    .search-pill-box {
-      display: none;
-      position: relative;
-      width: 100%;
-    }
-
-    .center-active .search-pill-box {
-      display: block;
-    }
-
-    .search-pill-input {
-      width: 100%;
-      background: #0a1329;
-      border: 1.5px solid #27417d;
-      border-radius: 999px;
-      padding: 0.62rem 2.2rem;
-      color: var(--text-white);
-      font-family: inherit;
-      font-size: 0.78rem;
-      font-weight: 600;
+      gap: 0.2rem;
+      pointer-events: none;
       text-align: center;
-      outline: none;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .search-pill-input::placeholder {
-      color: #64748b;
-      letter-spacing: 0.05em;
-    }
-
-    .search-pill-input:focus {
-      border-color: var(--primary-blue);
-      box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
-      background: #0d1833;
-    }
-
-    .search-pill-icon {
-      position: absolute;
-      left: 0.85rem;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #64748b;
-      font-size: 0.85rem;
-      pointer-events: none;
-    }
-
-    .search-pill-clear {
-      position: absolute;
-      right: 0.85rem;
-      top: 50%;
-      transform: translateY(-50%);
-      background: none;
-      border: none;
-      color: #64748b;
-      font-size: 0.85rem;
-      cursor: pointer;
-      display: none;
-    }
-
-    .search-pill-clear:hover {
-      color: var(--text-white);
-    }
-
-    /* Carousel Nav Arrows */
-    .nav-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 44px;
-      height: 44px;
-      background: #0f1c3b;
-      border: 1px solid #223766;
-      border-radius: 50%;
-      color: var(--text-white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      font-size: 1.2rem;
-      transition: all 0.2s ease;
-      z-index: 10;
-    }
-
-    .nav-arrow:hover {
-      background: #1d3368;
-      border-color: var(--primary-blue);
-      transform: translateY(-50%) scale(1.08);
-    }
-
-    .nav-arrow.prev { left: 0.25rem; }
-    .nav-arrow.next { right: 0.25rem; }
-
-    /* BOTTOM AGENT PICKING SECTION */
-    .picking-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.75rem;
-      width: 100%;
-    }
-
-    .picking-title-pill {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: #93c5fd;
-      background: #0d1836;
-      border: 1px solid #1d3263;
-      padding: 0.35rem 1.35rem;
-      border-radius: 999px;
-      text-transform: uppercase;
-    }
-
-    /* Scrollable Container for 29 Agents */
-    .picking-tray-scroll {
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 0.6rem;
-      max-width: 100%;
-      overflow-x: auto;
-      padding: 0.5rem 0.5rem 0.75rem;
-      scrollbar-width: thin;
-      scrollbar-color: #27417d #0a1329;
-    }
-
-    .picking-tray-scroll::-webkit-scrollbar {
-      height: 6px;
-    }
-
-    .picking-tray-scroll::-webkit-scrollbar-track {
-      background: #0a1329;
-      border-radius: 3px;
-    }
-
-    .picking-tray-scroll::-webkit-scrollbar-thumb {
-      background: #27417d;
-      border-radius: 3px;
-    }
-
-    .picking-box {
-      flex: 0 0 54px;
-      width: 54px;
-      height: 54px;
-      border-radius: 10px;
-      background: var(--picker-bg);
-      border: 1.5px solid var(--picker-border);
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.2s ease;
-    }
-
-    .picking-box:hover {
-      background: #14244d;
-      border-color: #3b82f6;
-      transform: translateY(-2px);
-    }
-
-    .picking-box.selected {
-      border-color: var(--primary-blue);
-      background: #172a59;
-      box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
-      transform: translateY(-2px);
-    }
-
-    .picking-avatar {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: none;
-    }
-
-    .picking-avatar.active {
-      display: block;
-    }
-
-    .picking-initial {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: var(--text-white);
+    .banner-initial {
+      font-size: 3.4rem;
+      font-weight: 900;
+      color: rgba(255, 255, 255, 0.08);
       line-height: 1;
     }
 
-    .picking-box.selected .picking-initial {
-      color: #60a5fa;
+    .banner-label {
+      font-size: 0.55rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    .picking-name {
-      position: absolute;
-      bottom: 2px;
-      font-size: 0.55rem;
+    /* Right Side: Information */
+    .card-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 0.95rem 1.15rem;
+      min-width: 0;
+    }
+
+    /* Top: Role & Pick Rate */
+    .card-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* UNIFORM NEUTRAL ROLE CHIP (NO ROLE COLORS) */
+    .card-role-chip {
+      font-size: 0.68rem;
       font-weight: 600;
-      color: var(--text-gray);
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
       text-transform: uppercase;
-      max-width: 90%;
+      letter-spacing: 0.04em;
+      background: #13151c;
+      color: #9ca3af;
+      border: 1px solid #232734;
+    }
+
+    /* NUMBER FONT IS ARIAL */
+    .card-pick-chip {
+      font-family: var(--font-number);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      background: #111318;
+      border: 1px solid #1f222c;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+    }
+
+    /* Middle: Identity (BIGGER FONT SIZES) */
+    .card-identity-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .agent-name {
+      font-size: 1.55rem; /* Bigger name font */
+      font-weight: 800;
+      color: var(--text-primary);
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+      line-height: 1.15;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .picking-box.selected .picking-name {
-      color: var(--text-white);
+    .agent-nat {
+      font-size: 0.92rem; /* Bigger nationality font */
+      font-weight: 500;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
-    .picking-box.search-dim {
-      opacity: 0.25;
-      transform: scale(0.92);
+    /* Bottom: Full-Width Quote Snippet (QUOTE BUTTON REMOVED) */
+    .card-quote-row {
+      display: flex;
+      align-items: center;
+      width: 100%;
     }
 
-    .picking-box.search-match {
-      border-color: #f59e0b;
-      box-shadow: 0 0 10px rgba(245, 158, 11, 0.4);
+    .agent-quote-preview {
+      font-size: 0.78rem;
+      font-weight: 400;
+      color: #838f9e;
+      font-style: italic;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+    }
+
+    /* Empty State */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 4rem 1rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state i {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+      display: block;
     }
 
     /* POP UP MODAL THAT GIVES THE SCREEN QUOTES THEN TAP TO REMOVE */
     .quote-modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(4, 9, 21, 0.85);
+      background: rgba(0, 0, 0, 0.78);
       z-index: 1000;
       display: flex;
       align-items: center;
@@ -551,7 +505,7 @@
       padding: 1.5rem;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 0.25s ease;
+      transition: opacity 0.2s ease;
       cursor: pointer; /* Tap to remove */
     }
 
@@ -561,95 +515,105 @@
     }
 
     .quote-modal-box {
-      max-width: 580px;
+      max-width: 560px;
       width: 100%;
-      background: #0d1938;
-      border: 1.5px solid #25407d;
-      border-radius: 20px;
-      padding: 2.5rem 2rem 2rem;
+      background: #141720;
+      border: 1px solid #282d3e;
+      border-radius: 14px;
+      padding: 2.25rem 2rem 2rem;
       text-align: center;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
-      transform: translateY(15px);
-      transition: transform 0.25s ease;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+      transform: translateY(10px);
+      transition: transform 0.2s ease;
     }
 
     .quote-modal-overlay.active .quote-modal-box {
       transform: translateY(0);
     }
 
-    .modal-quote-content {
+    .modal-quote-icon {
       font-size: 2rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-quote-content {
+      font-size: 2.05rem;
       font-weight: 800;
-      line-height: 1.25;
-      color: var(--text-white);
+      line-height: 1.3;
+      color: var(--text-primary);
       margin-bottom: 1rem;
     }
 
     .modal-agent-label {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      color: #60a5fa;
+      color: var(--text-secondary);
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .modal-context-desc {
-      font-size: 0.8rem;
-      color: var(--text-gray);
+      font-family: var(--font-number);
+      font-size: 0.82rem;
+      color: var(--text-muted);
       margin-bottom: 1.75rem;
     }
 
     .modal-tap-hint {
       display: inline-block;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      color: #94a3b8;
-      background: #14244d;
-      border: 1px solid #233c75;
-      padding: 0.45rem 1.2rem;
+      color: var(--text-muted);
+      background: #0f1218;
+      border: 1px solid #222634;
+      padding: 0.4rem 1rem;
       border-radius: 999px;
       letter-spacing: 0.05em;
       text-transform: uppercase;
     }
 
-    /* Responsive */
-    @media (max-width: 992px) {
-      .card-item.side-far {
-        display: none;
-      }
-      .card-item {
-        width: 175px;
-        height: 380px;
-      }
-      .card-item.center-active {
-        width: 280px;
-        height: 480px;
-      }
-      .modal-quote-content {
-        font-size: 1.6rem;
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 1100px) {
+      .agents-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 700px) {
       .top-nav {
-        padding: 1rem 1.25rem;
+        padding: 0.9rem 1.25rem;
       }
-      .card-item.side-near {
-        display: none;
+      .main-container {
+        padding: 1.5rem 1rem 2rem;
       }
-      .card-item.center-active {
-        width: 100%;
-        max-width: 320px;
-        height: 490px;
+      .agents-grid {
+        grid-template-columns: 1fr;
       }
-      .picking-box {
-        flex: 0 0 46px;
-        width: 46px;
-        height: 46px;
+      .catalog-title {
+        font-size: 1.4rem;
       }
       .modal-quote-content {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
+      }
+      .controls-bar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .filter-sort-group {
+        justify-content: space-between;
+      }
+      .card-banner-art {
+        flex: 0 0 110px;
+      }
+      .agent-name {
+        font-size: 1.35rem;
+      }
+      .agent-nat {
+        font-size: 0.85rem;
       }
     }
   </style>
@@ -660,7 +624,7 @@
   <header class="top-nav">
     <a href="../index.html" class="brand-link" title="Return to Projects Hub">
       <span class="brand-tag">JSON-A2</span>
-      <span class="brand-title">Valorant Agents JSON </span>
+      <span class="brand-title">Calling Cards</span>
     </a>
     <a href="../index.html" class="back-btn">
       <i class="bi bi-arrow-left"></i>
@@ -668,29 +632,65 @@
     </a>
   </header>
 
-  <!-- Main Content Area -->
-  <main class="main-content">
+  <!-- Main Container -->
+  <main class="main-container">
 
-    <!-- 5 CARDS CAROUSEL (Flat 2D) -->
-    <section class="carousel-wrapper" aria-label="Calling Cards Carousel">
-      <button class="nav-arrow prev" id="prevCardBtn" aria-label="Previous Agent">
-        <i class="bi bi-chevron-left"></i>
-      </button>
-
-      <div class="cards-track" id="cardsTrack">
-        <!-- Rendered dynamically -->
+    <!-- Header Section -->
+    <header class="catalog-header">
+      <div class="header-text-row">
+        <div>
+          <h1 class="catalog-title">Agent Calling Cards</h1>
+          <p class="catalog-subtitle">Valorant Agent Calling Cards JSON</p>
+        </div>
+        <span class="agent-counter-badge" id="agentCounter">Showing 29 of 29 cards</span>
       </div>
 
-      <button class="nav-arrow next" id="nextCardBtn" aria-label="Next Agent">
-        <i class="bi bi-chevron-right"></i>
-      </button>
-    </section>
+      <!-- Controls: Search, Filters & Sort -->
+      <div class="controls-bar">
+        <div class="search-input-wrapper">
+          <i class="bi bi-search"></i>
+          <input 
+            type="text" 
+            class="search-input" 
+            id="searchInput" 
+            placeholder="Search by agent name, nationality, or quote..." 
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button class="clear-search-btn" id="clearSearchBtn" title="Clear search">
+            <i class="bi bi-x-circle-fill"></i>
+          </button>
+        </div>
 
+        <div class="filter-sort-group">
+          <!-- Filter Pills -->
+          <div class="filter-pills" id="filterPills">
+            <button class="filter-pill active" data-role="all">All</button>
+            <button class="filter-pill" data-role="Duelist">Duelist</button>
+            <button class="filter-pill" data-role="Controller">Controller</button>
+            <button class="filter-pill" data-role="Initiator">Initiator</button>
+            <button class="filter-pill" data-role="Sentinel">Sentinel</button>
+          </div>
 
-
-      <div class="picking-tray-scroll" id="pickingTrayScroll">
-        <!-- 29 Agents rendered dynamically -->
+          <!-- Sort Dropdown -->
+          <div class="sort-wrapper">
+            <span class="sort-label"><i class="bi bi-arrow-down-up me-1"></i>Sort:</span>
+            <select class="sort-select" id="sortSelect" title="Sort calling cards">
+              <option value="default">Default</option>
+              <option value="pick-desc">Pick Rate (High to Low)</option>
+              <option value="pick-asc">Pick Rate (Low to High)</option>
+              <option value="name-asc">Name (A – Z)</option>
+              <option value="name-desc">Name (Z – A)</option>
+              <option value="role">Role</option>
+            </select>
+          </div>
+        </div>
       </div>
+    </header>
+
+    <!-- 3 CARDS PER ROW GRID (HORIZONTAL CALLING CARDS) -->
+    <section class="agents-grid" id="agentsGrid" aria-label="Calling Cards Grid">
+      <!-- 29 Horizontal Cards rendered dynamically -->
     </section>
 
   </main>
@@ -698,9 +698,12 @@
   <!-- POP UP MODAL THAT GIVES THE SCREEN QUOTES THEN TAP TO REMOVE -->
   <div class="quote-modal-overlay" id="quoteModalOverlay" role="dialog" aria-modal="true" aria-label="Agent Quote Modal">
     <div class="quote-modal-box">
+      <div class="modal-quote-icon">
+        <i class="bi bi-quote"></i>
+      </div>
       <div class="modal-quote-content" id="modalQuoteContent">"Scatter!"</div>
       <div class="modal-agent-label" id="modalAgentLabel">OMEN · CONTROLLER</div>
-      <p class="modal-context-desc" id="modalContextDesc">Pick Rate: 7.0%</p>
+      <p class="modal-context-desc" id="modalContextDesc">Pick Rate: 7.0% · Unknown</p>
       <div class="modal-tap-hint">TAP ANYWHERE TO REMOVE</div>
     </div>
   </div>
@@ -741,19 +744,29 @@
       ]
     };
 
-    let agents = [];
-    let currentIndex = 0;
+    let allAgents = [];
+    let selectedRole = "all";
     let searchQuery = "";
+    let currentSort = "default";
 
     // DOM Elements
-    const cardsTrack = document.getElementById('cardsTrack');
-    const pickingTrayScroll = document.getElementById('pickingTrayScroll');
-    const prevCardBtn = document.getElementById('prevCardBtn');
-    const nextCardBtn = document.getElementById('nextCardBtn');
+    const agentsGrid = document.getElementById('agentsGrid');
+    const searchInput = document.getElementById('searchInput');
+    const clearSearchBtn = document.getElementById('clearSearchBtn');
+    const filterPills = document.querySelectorAll('.filter-pill');
+    const sortSelect = document.getElementById('sortSelect');
+    const agentCounter = document.getElementById('agentCounter');
     const quoteModalOverlay = document.getElementById('quoteModalOverlay');
     const modalQuoteContent = document.getElementById('modalQuoteContent');
     const modalAgentLabel = document.getElementById('modalAgentLabel');
     const modalContextDesc = document.getElementById('modalContextDesc');
+
+    // Parse pick rate string (e.g. "9.4%" -> 9.4)
+    function parsePickRate(str) {
+      if (!str) return 0;
+      const num = parseFloat(str.replace('%', ''));
+      return isNaN(num) ? 0 : num;
+    }
 
     // Load val.json
     async function loadData() {
@@ -761,247 +774,131 @@
         const res = await fetch('./val.json');
         if (!res.ok) throw new Error('Fetch failed');
         const data = await res.json();
-        agents = data.agents || (Array.isArray(data) ? data : []);
+        allAgents = data.agents || (Array.isArray(data) ? data : []);
       } catch (e) {
         console.warn('Loading fallback embedded val.json data:', e);
-        agents = EXACT_VAL_JSON.agents;
+        allAgents = EXACT_VAL_JSON.agents;
       }
-      init();
-    }
-
-    function init() {
-      if (!agents || agents.length === 0) return;
-      renderPickingRow();
-      renderCarousel();
+      renderCards();
       setupEvents();
     }
 
-    function getWrappedIndex(idx) {
-      const len = agents.length;
-      return ((idx % len) + len) % len;
+    // Filter & Sort Logic
+    function getProcessedAgents() {
+      const q = searchQuery.trim().toLowerCase();
+
+      // Filter
+      let result = allAgents.filter(agent => {
+        const matchesRole = (selectedRole === 'all') || 
+                            (agent.role && agent.role.toLowerCase() === selectedRole.toLowerCase());
+
+        const matchesSearch = !q || 
+                              (agent.name && agent.name.toLowerCase().includes(q)) ||
+                              (agent.role && agent.role.toLowerCase().includes(q)) ||
+                              (agent.nationality && agent.nationality.toLowerCase().includes(q)) ||
+                              (agent.quote && agent.quote.toLowerCase().includes(q));
+
+        return matchesRole && matchesSearch;
+      });
+
+      // Sort
+      if (currentSort === 'pick-desc') {
+        result.sort((a, b) => parsePickRate(b.pick_percentage) - parsePickRate(a.pick_percentage));
+      } else if (currentSort === 'pick-asc') {
+        result.sort((a, b) => parsePickRate(a.pick_percentage) - parsePickRate(b.pick_percentage));
+      } else if (currentSort === 'name-asc') {
+        result.sort((a, b) => (a.name || "").localeCompare(b.name || ""));
+      } else if (currentSort === 'name-desc') {
+        result.sort((a, b) => (b.name || "").localeCompare(a.name || ""));
+      } else if (currentSort === 'role') {
+        result.sort((a, b) => (a.role || "").localeCompare(b.role || ""));
+      }
+
+      return result;
     }
 
-    // Render 5 Flat 2D Cards: -2, -1, 0, 1, 2
-    function renderCarousel() {
-      cardsTrack.innerHTML = '';
-      const offsets = [-2, -1, 0, 1, 2];
+    // Render 3 Horizontal Calling Cards per row
+    function renderCards() {
+      const filtered = getProcessedAgents();
+      agentCounter.textContent = `Showing ${filtered.length} of ${allAgents.length} cards`;
 
-      offsets.forEach(offset => {
-        const agentIdx = getWrappedIndex(currentIndex + offset);
-        const agent = agents[agentIdx];
-        const isCenter = (offset === 0);
-
-        let cardClass = 'card-item';
-        if (offset === -2 || offset === 2) cardClass += ' side-far';
-        else if (offset === -1 || offset === 1) cardClass += ' side-near';
-        else if (isCenter) cardClass += ' center-active';
-
-        const card = document.createElement('div');
-        card.className = cardClass;
-
-        const hasCardImg = agent.cardImage && agent.cardImage.trim() !== "";
-        const agentName = agent.name || "Agent";
-        const agentRole = agent.role || "Specialist";
-        const extraInfo = agent.pick_percentage ? `Pick: ${agent.pick_percentage}` : (agent.nationality || "");
-
-        card.innerHTML = `
-          <div class="card-header-bar">
-            <span class="role-badge">${agentRole}</span>
-            <span class="agent-extra-badge">${extraInfo}</span>
-          </div>
-
-          <div class="card-visual-area">
-            ${hasCardImg ? `<img src="${agent.cardImage}" alt="${agentName}" class="card-img-element active" />` : ''}
-            
-            <div class="placeholder-content" style="${hasCardImg ? 'display: none;' : ''}">
-              <div class="placeholder-initial">${agentName.charAt(0)}</div>
-              <div class="placeholder-text">AGENT CALLING CARD</div>
-            </div>
-          </div>
-
-          <div class="card-footer-info">
-            <div>
-              <div class="agent-name-title">${agentName}</div>
-              <div class="agent-desc-tag">${agent.nationality ? `${agent.nationality} · ` : ''}"${agent.quote || ''}"</div>
-            </div>
-
-            ${isCenter ? `
-              <button class="quote-action-btn" id="openQuoteBtn">
-                <i class="bi bi-chat-quote-fill"></i>
-                <span>Agent Quote</span>
-              </button>
-
-              <div class="search-pill-box">
-                <i class="bi bi-search search-pill-icon"></i>
-                <input 
-                  type="text" 
-                  class="search-pill-input" 
-                  id="searchPillInput" 
-                  placeholder="SEARCH YOUR AGENT HERE"
-                  value="${searchQuery}"
-                  autocomplete="off"
-                  spellcheck="false"
-                />
-                <button class="search-pill-clear" id="searchPillClear" style="${searchQuery ? 'display:block' : 'display:none'}">
-                  <i class="bi bi-x-circle-fill"></i>
-                </button>
-              </div>
-            ` : ''}
+      if (filtered.length === 0) {
+        agentsGrid.innerHTML = `
+          <div class="empty-state">
+            <i class="bi bi-search"></i>
+            <h3>No calling cards found</h3>
+            <p>Try searching for a different agent name, role, or nationality.</p>
           </div>
         `;
-
-        if (!isCenter) {
-          card.addEventListener('click', () => {
-            selectAgent(agentIdx);
-          });
-        }
-
-        cardsTrack.appendChild(card);
-      });
-
-      // Bind Search & Quote inside center card
-      const searchInput = document.getElementById('searchPillInput');
-      const searchClear = document.getElementById('searchPillClear');
-      const openQuoteBtn = document.getElementById('openQuoteBtn');
-
-      if (searchInput) {
-        if (document.activeElement && document.activeElement.id === 'searchPillInput') {
-          searchInput.focus();
-          searchInput.setSelectionRange(searchInput.value.length, searchInput.value.length);
-        }
-
-        searchInput.addEventListener('input', (e) => {
-          handleSearch(e.target.value);
-        });
-
-        searchInput.addEventListener('keydown', (e) => {
-          if (e.key === 'Enter') {
-            const match = findMatchingIndex(searchInput.value);
-            if (match !== -1) {
-              selectAgent(match);
-              showQuoteModal(agents[match]);
-            }
-          }
-        });
-      }
-
-      if (searchClear) {
-        searchClear.addEventListener('click', (e) => {
-          e.stopPropagation();
-          searchQuery = "";
-          handleSearch("");
-        });
-      }
-
-      if (openQuoteBtn) {
-        openQuoteBtn.addEventListener('click', (e) => {
-          e.stopPropagation();
-          showQuoteModal(agents[currentIndex]);
-        });
-      }
-    }
-
-    // Render Bottom Picking Row (All 29 agents)
-    function renderPickingRow() {
-      pickingTrayScroll.innerHTML = '';
-      agents.forEach((agent, idx) => {
-        const box = document.createElement('div');
-        box.className = `picking-box ${idx === currentIndex ? 'selected' : ''}`;
-        box.id = `picker-${idx}`;
-        const agentName = agent.name || "Agent";
-        box.title = `${agentName} (${agent.role || ''} · ${agent.nationality || ''})`;
-
-        const hasAvatar = agent.avatarImage && agent.avatarImage.trim() !== "";
-
-        box.innerHTML = `
-          ${hasAvatar ? `<img src="${agent.avatarImage}" class="picking-avatar active" alt="${agentName}">` : ''}
-          <div class="picking-initial" style="${hasAvatar ? 'display: none;' : ''}">
-            ${agentName.slice(0, 2)}
-          </div>
-          <span class="picking-name">${agentName}</span>
-        `;
-
-        box.addEventListener('click', () => {
-          const wasSelected = (idx === currentIndex);
-          selectAgent(idx);
-          if (wasSelected) {
-            showQuoteModal(agents[idx]);
-          }
-        });
-
-        pickingTrayScroll.appendChild(box);
-      });
-    }
-
-    function selectAgent(idx) {
-      currentIndex = getWrappedIndex(idx);
-      renderCarousel();
-
-      document.querySelectorAll('.picking-box').forEach((box, i) => {
-        box.classList.toggle('selected', i === currentIndex);
-      });
-
-      const activeEl = document.getElementById(`picker-${currentIndex}`);
-      if (activeEl) {
-        activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      }
-    }
-
-    function handleSearch(val) {
-      searchQuery = val;
-      const clean = val.trim().toLowerCase();
-      const clearBtn = document.getElementById('searchPillClear');
-      if (clearBtn) {
-        clearBtn.style.display = clean ? 'block' : 'none';
-      }
-
-      const boxes = document.querySelectorAll('.picking-box');
-      if (!clean) {
-        boxes.forEach(b => b.classList.remove('search-dim', 'search-match'));
         return;
       }
 
-      let firstMatch = -1;
-      agents.forEach((ag, idx) => {
-        const nameMatch = (ag.name || "").toLowerCase().includes(clean);
-        const roleMatch = (ag.role || "").toLowerCase().includes(clean);
-        const natMatch = (ag.nationality || "").toLowerCase().includes(clean);
-        const matches = nameMatch || roleMatch || natMatch;
+      agentsGrid.innerHTML = '';
+      filtered.forEach(agent => {
+        const card = document.createElement('article');
+        card.className = 'agent-card';
+        card.setAttribute('tabindex', '0');
 
-        const box = document.getElementById(`picker-${idx}`);
-        if (box) {
-          if (matches) {
-            box.classList.add('search-match');
-            box.classList.remove('search-dim');
-            if (firstMatch === -1) firstMatch = idx;
-          } else {
-            box.classList.remove('search-match');
-            box.classList.add('search-dim');
+        const cardImg = (agent.cardImage || agent.image || agent.avatar || agent.picture || "").trim();
+        const hasCardImg = cardImg !== "";
+        const agentName = agent.name || "Agent";
+        const agentRole = agent.role || "Specialist";
+        const nat = agent.nationality || "Unknown";
+        const pick = agent.pick_percentage ? `Pick: ${agent.pick_percentage}` : "";
+
+        card.innerHTML = `
+          <!-- Left: Calling Card Banner Artwork -->
+          <div class="card-banner-art">
+            ${hasCardImg ? `<img src="${cardImg}" alt="${agentName}" class="card-image-display active" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />` : ''}
+            
+            <div class="banner-fallback" style="${hasCardImg ? 'display: none;' : ''}">
+              <div class="banner-initial">${agentName.charAt(0)}</div>
+              <div class="banner-label">CALLING CARD</div>
+            </div>
+          </div>
+
+          <!-- Right: Card Information Content -->
+          <div class="card-content">
+            <!-- Top: Neutral Role & Arial Pick Rate -->
+            <div class="card-meta-row">
+              <span class="card-role-chip">${agentRole}</span>
+              <span class="card-pick-chip">${pick}</span>
+            </div>
+
+            <!-- Middle: Identity (Bigger font for Name & Nationality) -->
+            <div class="card-identity-row">
+              <h2 class="agent-name">${agentName}</h2>
+              <span class="agent-nat">${nat}</span>
+            </div>
+
+            <!-- Bottom: Full-Width Quote (Quote button removed) -->
+            <div class="card-quote-row">
+              <span class="agent-quote-preview">"${agent.quote || 'Ready.'}"</span>
+            </div>
+          </div>
+        `;
+
+        // Card Click opens Quote Modal
+        card.addEventListener('click', () => {
+          showQuoteModal(agent);
+        });
+
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            showQuoteModal(agent);
           }
-        }
+        });
+
+        agentsGrid.appendChild(card);
       });
-
-      if (firstMatch !== -1 && (clean.length >= 3 || clean === (agents[firstMatch].name || "").toLowerCase())) {
-        selectAgent(firstMatch);
-      }
     }
 
-    function findMatchingIndex(val) {
-      const clean = val.trim().toLowerCase();
-      if (!clean) return -1;
-      return agents.findIndex(ag => 
-        (ag.name || "").toLowerCase().includes(clean) || 
-        (ag.role || "").toLowerCase().includes(clean) ||
-        (ag.nationality || "").toLowerCase().includes(clean)
-      );
-    }
-
-    // Modal: Tap to remove
+    // Screen Quote Popup Modal (Tap anywhere to remove)
     function showQuoteModal(agent) {
       if (!agent) return;
       modalQuoteContent.textContent = `"${agent.quote || 'Ready for action.'}"`;
-      modalAgentLabel.textContent = `${agent.name || 'Agent'} · ${agent.role || 'Specialist'}${agent.nationality ? ` (${agent.nationality})` : ''}`;
-      modalContextDesc.textContent = agent.pick_percentage ? `Pick Rate: ${agent.pick_percentage}` : 'Signature Voice Line';
+      modalAgentLabel.textContent = `${agent.name || 'Agent'} · ${agent.role || 'Specialist'}`;
+      modalContextDesc.textContent = `${agent.nationality ? `Origin: ${agent.nationality}  ·  ` : ''}${agent.pick_percentage ? `Pick Rate: ${agent.pick_percentage}` : ''}`;
       quoteModalOverlay.classList.add('active');
     }
 
@@ -1009,38 +906,51 @@
       quoteModalOverlay.classList.remove('active');
     }
 
+    // Setup Event Listeners
     function setupEvents() {
-      prevCardBtn.addEventListener('click', () => {
-        selectAgent(currentIndex - 1);
+      // Search Input
+      searchInput.addEventListener('input', (e) => {
+        searchQuery = e.target.value;
+        clearSearchBtn.style.display = searchQuery ? 'block' : 'none';
+        renderCards();
       });
 
-      nextCardBtn.addEventListener('click', () => {
-        selectAgent(currentIndex + 1);
+      clearSearchBtn.addEventListener('click', () => {
+        searchInput.value = '';
+        searchQuery = '';
+        clearSearchBtn.style.display = 'none';
+        searchInput.focus();
+        renderCards();
       });
 
-      // Tap / Click anywhere on the overlay removes modal
+      // Role Filter Buttons
+      filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          filterPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          selectedRole = pill.dataset.role;
+          renderCards();
+        });
+      });
+
+      // Sort Select Dropdown
+      sortSelect.addEventListener('change', (e) => {
+        currentSort = e.target.value;
+        renderCards();
+      });
+
+      // Tap / Click anywhere on modal dismisses it
       quoteModalOverlay.addEventListener('click', () => {
         hideQuoteModal();
       });
 
-      // Keyboard
+      // Escape key closes modal
       window.addEventListener('keydown', (e) => {
-        if (document.activeElement && document.activeElement.tagName === 'INPUT') {
-          if (e.key === 'Escape') {
-            hideQuoteModal();
+        if (e.key === 'Escape') {
+          hideQuoteModal();
+          if (document.activeElement && document.activeElement.tagName === 'INPUT') {
             document.activeElement.blur();
           }
-          return;
-        }
-
-        if (e.key === 'ArrowLeft') {
-          selectAgent(currentIndex - 1);
-        } else if (e.key === 'ArrowRight') {
-          selectAgent(currentIndex + 1);
-        } else if (e.key === 'Escape') {
-          hideQuoteModal();
-        } else if (e.key === 'Enter') {
-          showQuoteModal(agents[currentIndex]);
         }
       });
     }
