@@ -1,0 +1,202 @@
+[
+  {
+    "id": "omen",
+    "name": "OMEN",
+    "role": "Controller",
+    "tagline": "Shadow Walker",
+    "quote": "Watch them die.",
+    "quoteContext": "Ultimate Activation",
+    "biography": "A phantom of a memory, Omen hunts in the shadows. He renders enemies blind, teleports across the field, then lets paranoia take hold as foes scramble to anticipate where he might strike next.",
+    "cardImage": "",
+    "avatarImage": "",
+    "themeColor": "#4b32b0",
+    "accentColor": "#00e5ff",
+    "gradient": "linear-gradient(145deg, #100a26 0%, #1e1345 50%, #0b1a3a 100%)",
+    "abilities": [
+      { "name": "Shrouded Step", "type": "Basic" },
+      { "name": "Paranoia", "type": "Basic" },
+      { "name": "Dark Cover", "type": "Signature" },
+      { "name": "From the Shadows", "type": "Ultimate" }
+    ]
+  },
+  {
+    "id": "jett",
+    "name": "JETT",
+    "role": "Duelist",
+    "tagline": "Wind Blader",
+    "quote": "Watch this!",
+    "quoteContext": "Round Ace / Round Start",
+    "biography": "Representing South Korea, Jett's agile and evasive fighting style lets her take risks no one else can. She runs circles around every skirmish, cutting enemies before they even know what hit them.",
+    "cardImage": "",
+    "avatarImage": "",
+    "themeColor": "#3296c8",
+    "accentColor": "#99f3ff",
+    "gradient": "linear-gradient(145deg, #091a2e 0%, #0d2f4d 50%, #071929 100%)",
+    "abilities": [
+      { "name": "Cloudburst", "type": "Basic" },
+      { "name": "Updraft", "type": "Basic" },
+      { "name": "Tailwind", "type": "Signature" },
+      { "name": "Blade Storm", "type": "Ultimate" }
+    ]
+  },
+  {
+    "id": "reyna",
+    "name": "REYNA",
+    "role": "Duelist",
+    "tagline": "Soul Harvester",
+    "quote": "They will cower!",
+    "quoteContext": "Empress Activation",
+    "biography": "Forged in the heart of Mexico, Reyna dominates single combat, popping off with each kill she scores. Her capability is only limited by raw skill, making her sharply dependent on performance.",
+    "cardImage": "",
+    "avatarImage": "",
+    "themeColor": "#a51c6b",
+    "accentColor": "#f8428f",
+    "gradient": "linear-gradient(145deg, #240a1b 0%, #3a0d2a 50%, #120524 100%)",
+    "abilities": [
+      { "name": "Leer", "type": "Basic" },
+      { "name": "Devour", "type": "Signature" },
+      { "name": "Dismiss", "type": "Signature" },
+      { "name": "Empress", "type": "Ultimate" }
+    ]
+  },
+  {
+    "id": "phoenix",
+    "name": "PHOENIX",
+    "role": "Duelist",
+    "tagline": "Fire Starter",
+    "quote": "Watch your eyes!",
+    "quoteContext": "Curveball Flash / Match Start",
+    "biography": "Hailing from the UK, Phoenix's star power shines through in his fighting style, igniting the battlefield with flash and flare. Whether he's got backup or not, he rushes in to fight on his own terms.",
+    "cardImage": "",
+    "avatarImage": "",
+    "themeColor": "#df541e",
+    "accentColor": "#ffaa2b",
+    "gradient": "linear-gradient(145deg, #2a110a 0%, #441c0e 50%, #170d24 100%)",
+    "abilities": [
+      { "name": "Blaze", "type": "Basic" },
+      { "name": "Curveball", "type": "Basic" },
+      { "name": "Hot Hands", "type": "Signature" },
+      { "name": "Run It Back", "type": "Ultimate" }
+    ]
+  },
+  {
+    "id": "viper",
+    "name": "VIPER",
+    "role": "Controller",
+    "tagline": "Toxic Chemist",
+    "quote": "Welcome to my world.",
+    "quoteContext": "Viper's Pit Activation",
+    "biography": "The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and cripple the enemy's vision. If her toxins don't kill her prey, her mind games surely will.",
+    "cardImage": "",
+    "avatarImage": "",
+    "themeColor": "#147b42",
+    "accentColor": "#32e875",
+    "gradient": "linear-gradient(145deg, #091e13 0%, #0d321d 50%, #07151e 100%)",
+    "abilities": [
+      { "name": "Snake Bite", "type": "Basic" },
+      { "name": "Poison Cloud", "type": "Basic" },
+      { "name": "Toxic Screen", "type": "Signature" },
+      { "name": "Viper's Pit", "type": "Ultimate" }
+    ]
+  },
+  {
+    "id": "sova",
+    "name": "SOVA",
+    "role": "Initiator",
+    "tagline": "Hunter of the Tundra",
+    "quote": "I am the hunter!",
+    "quoteContext": "Hunter's Fury Activation",
+    "biography": "Born from the eternal winter of Russia's tundra, Sova tracks, finds, and eliminates enemies with ruthless efficiency and precision. His custom bow and unyielding scouting abilities leave nowhere to hide.",
+    "cardImage": "",
+    "avatarImage": "",
+    "themeColor": "#2458a2",
+    "accentColor": "#54b2ff",
+    "gradient": "linear-gradient(145deg, #0a1728 0%, #112745 50%, #091220 100%)",
+    "abilities": [
+      { "name": "Owl Drone", "type": "Basic" },
+      { "name": "Shock Bolt", "type": "Basic" },
+      { "name": "Recon Bolt", "type": "Signature" },
+      { "name": "Hunter's Fury", "type": "Ultimate" }
+    ]
+  },
+  {
+    "id": "cypher",
+    "name": "CYPHER",
+    "role": "Sentinel",
+    "tagline": "One-Man Surveillance Network",
+    "quote": "I know exactly where you are.",
+    "quoteContext": "Neural Theft Activation",
+    "biography": "The Moroccan information broker, Cypher is a one-man surveillance network who keeps tabs on the enemy's every move. No secret is safe, no maneuver goes unseen. Cypher is always watching.",
+    "cardImage": "",
+    "avatarImage": "",
+    "themeColor": "#a88132",
+    "accentColor": "#f5d165",
+    "gradient": "linear-gradient(145deg, #241d0b 0%, #3e3215 50%, #121021 100%)",
+    "abilities": [
+      { "name": "Trapwire", "type": "Basic" },
+      { "name": "Cyber Cage", "type": "Basic" },
+      { "name": "Spycam", "type": "Signature" },
+      { "name": "Neural Theft", "type": "Ultimate" }
+    ]
+  },
+  {
+    "id": "killjoy",
+    "name": "KILLJOY",
+    "role": "Sentinel",
+    "tagline": "German Inventor",
+    "quote": "Don't stress, I've already thought of everything.",
+    "quoteContext": "Round Preparation",
+    "biography": "The genius of Germany, Killjoy secures the battlefield with ease using her arsenal of inventions. If the damage from her gear doesn't stop her enemies, her robots' debuff will make short work of them.",
+    "cardImage": "",
+    "avatarImage": "",
+    "themeColor": "#d3a71b",
+    "accentColor": "#ffe600",
+    "gradient": "linear-gradient(145deg, #282006 0%, #45370d 50%, #0d1222 100%)",
+    "abilities": [
+      { "name": "Nanoswarm", "type": "Basic" },
+      { "name": "Alarmbot", "type": "Basic" },
+      { "name": "Turret", "type": "Signature" },
+      { "name": "Lockdown", "type": "Ultimate" }
+    ]
+  },
+  {
+    "id": "fade",
+    "name": "FADE",
+    "role": "Initiator",
+    "tagline": "Turkish Bounty Hunter",
+    "quote": "Face your fear.",
+    "quoteContext": "Nightfall Activation",
+    "biography": "Turkish bounty hunter Fade unleashes the power of raw nightmares to seize the secrets of enemies. Attuned with terror itself, she hunts down targets before crushing them in the dark.",
+    "cardImage": "",
+    "avatarImage": "",
+    "themeColor": "#1d3e52",
+    "accentColor": "#00e1d9",
+    "gradient": "linear-gradient(145deg, #091720 0%, #122838 50%, #0a0d18 100%)",
+    "abilities": [
+      { "name": "Prowler", "type": "Basic" },
+      { "name": "Seize", "type": "Basic" },
+      { "name": "Haunt", "type": "Signature" },
+      { "name": "Nightfall", "type": "Ultimate" }
+    ]
+  },
+  {
+    "id": "chamber",
+    "name": "CHAMBER",
+    "role": "Sentinel",
+    "tagline": "Well Dressed Marksman",
+    "quote": "You want to play? Let's play.",
+    "quoteContext": "Tour De Force Activation",
+    "biography": "Well dressed and well armed, French weapons designer Chamber expels aggressors with deadly precision. He leverages his custom arsenal to hold the line and pick off enemies from afar.",
+    "cardImage": "",
+    "avatarImage": "",
+    "themeColor": "#a17838",
+    "accentColor": "#e8b858",
+    "gradient": "linear-gradient(145deg, #241c0e 0%, #3e2e17 50%, #150f24 100%)",
+    "abilities": [
+      { "name": "Trademark", "type": "Basic" },
+      { "name": "Headhunter", "type": "Basic" },
+      { "name": "Rendezvous", "type": "Signature" },
+      { "name": "Tour De Force", "type": "Ultimate" }
+    ]
+  }
+]
