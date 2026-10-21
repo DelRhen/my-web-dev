@@ -1,8 +1,70 @@
 {
   "agents": [
     {
-    "id": "omen",
-    "name": "OMEN",
+      "name": "Astra",
+      "role": "Controller",
+      "nationality": "Ghana",
+      "quote": "You divide, they fall.",
+      "pick_percentage": "1.2%"
+    },
+    {
+      "name": "Breach",
+      "role": "Initiator",
+      "nationality": "Sweden",
+      "quote": "Off your feet!",
+      "pick_percentage": "2.0%"
+    },
+    {
+      "name": "Brimstone",
+      "role": "Controller",
+      "nationality": "United States",
+      "quote": "Open up the sky!",
+      "pick_percentage": "1.7%"
+    },
+    {
+      "name": "Chamber",
+      "role": "Sentinel",
+      "nationality": "France",
+      "quote": "You have good taste, my friend.",
+      "pick_percentage": "2.7%"
+    },
+    {
+      "name": "Clove",
+      "role": "Controller",
+      "nationality": "Scotland (United Kingdom)",
+      "quote": "Not dead yet!",
+      "pick_percentage": "8.1%"
+    },
+    {
+      "name": "Cypher",
+      "role": "Sentinel",
+      "nationality": "Morocco",
+      "quote": "I know exactly where you are.",
+      "pick_percentage": "4.7%"
+    },
+    {
+      "name": "Deadlock",
+      "role": "Sentinel",
+      "nationality": "Norway",
+      "quote": "My territory, my rules.",
+      "pick_percentage": "2.4%"
+    },
+    {
+      "name": "Fade",
+      "role": "Initiator",
+      "nationality": "Turkey",
+      "quote": "Face your fear.",
+      "pick_percentage": "3.0%"
+    },
+    {
+      "name": "Gekko",
+      "role": "Initiator",
+      "nationality": "United States",
+      "quote": "Wingman, let's go!",
+      "pick_percentage": "3.8%"
+    },
+    {
+      "name": "Harbor",
       "role": "Controller",
       "nationality": "India",
       "quote": "Let the tides turn.",
@@ -20,79 +82,77 @@
       "role": "Duelist",
       "nationality": "South Korea",
       "quote": "Watch this!",
-    "quoteContext": "Round Ace / Round Start",
-    "biography": "Representing South Korea, Jett's agile and evasive fighting style lets her take risks no one else can. She runs circles around every skirmish, cutting enemies before they even know what hit them.",
-    "cardImage": "",
-    "avatarImage": "",
-    "themeColor": "#3296c8",
-    "accentColor": "#99f3ff",
-    "gradient": "linear-gradient(145deg, #091a2e 0%, #0d2f4d 50%, #071929 100%)",
-    "abilities": [
-      { "name": "Cloudburst", "type": "Basic" },
-      { "name": "Updraft", "type": "Basic" },
-      { "name": "Tailwind", "type": "Signature" },
-      { "name": "Blade Storm", "type": "Ultimate" }
-    ]
-  },
-  {
-    "id": "reyna",
-    "name": "REYNA",
+      "pick_percentage": "9.4%"
+    },
+    {
+      "name": "KAY/O",
+      "role": "Initiator",
+      "nationality": "Alternate Earth (Robot)",
+      "quote": "No one walks away.",
+      "pick_percentage": "1.8%"
+    },
+    {
+      "name": "Killjoy",
+      "role": "Sentinel",
+      "nationality": "Germany",
+      "quote": "Don't stress, I've already thought of everything.",
+      "pick_percentage": "4.2%"
+    },
+    {
+      "name": "Miks",
+      "role": "Controller",
+      "nationality": "Croatia",
+      "quote": "Breathe in, let's reset.",
+      "pick_percentage": "1.3%"
+    },
+    {
+      "name": "Neon",
+      "role": "Duelist",
+      "nationality": "Philippines",
+      "quote": "Here we go!",
+      "pick_percentage": "2.3%"
+    },
+    {
+      "name": "Omen",
+      "role": "Controller",
+      "nationality": "Unknown",
+      "quote": "Scatter!",
+      "pick_percentage": "7.0%"
+    },
+    {
+      "name": "Phoenix",
+      "role": "Duelist",
+      "nationality": "United Kingdom",
+      "quote": "Joke's over, you're dead!",
+      "pick_percentage": "3.5%"
+    },
+    {
+      "name": "Raze",
+      "role": "Duelist",
+      "nationality": "Brazil",
+      "quote": "Here comes the party!",
+      "pick_percentage": "4.1%"
+    },
+    {
+      "name": "Reyna",
       "role": "Duelist",
       "nationality": "Mexico",
       "quote": "They will cower!",
-    "quoteContext": "Empress Activation",
-    "biography": "Forged in the heart of Mexico, Reyna dominates single combat, popping off with each kill she scores. Her capability is only limited by raw skill, making her sharply dependent on performance.",
-    "cardImage": "",
-    "avatarImage": "",
-    "themeColor": "#a51c6b",
-    "accentColor": "#f8428f",
-    "gradient": "linear-gradient(145deg, #240a1b 0%, #3a0d2a 50%, #120524 100%)",
-    "abilities": [
-      { "name": "Leer", "type": "Basic" },
-      { "name": "Devour", "type": "Signature" },
-      { "name": "Dismiss", "type": "Signature" },
-      { "name": "Empress", "type": "Ultimate" }
-    ]
-  },
-  {
-    "id": "phoenix",
-    "name": "PHOENIX",
-    "role": "Duelist",
-    "tagline": "Fire Starter",
-    "quote": "Watch your eyes!",
-    "quoteContext": "Curveball Flash / Match Start",
-    "biography": "Hailing from the UK, Phoenix's star power shines through in his fighting style, igniting the battlefield with flash and flare. Whether he's got backup or not, he rushes in to fight on his own terms.",
-    "cardImage": "",
-    "avatarImage": "",
-    "themeColor": "#df541e",
-    "accentColor": "#ffaa2b",
-    "gradient": "linear-gradient(145deg, #2a110a 0%, #441c0e 50%, #170d24 100%)",
-    "abilities": [
-      { "name": "Blaze", "type": "Basic" },
-      { "name": "Curveball", "type": "Basic" },
-      { "name": "Hot Hands", "type": "Signature" },
-      { "name": "Run It Back", "type": "Ultimate" }
-    ]
-  },
-  {
-    "id": "viper",
-    "name": "VIPER",
-    "role": "Controller",
-    "tagline": "Toxic Chemist",
-    "quote": "Welcome to my world.",
-    "quoteContext": "Viper's Pit Activation",
-    "biography": "The American chemist, Viper deploys an array of poisonous chemical devices to control the battlefield and cripple the enemy's vision. If her toxins don't kill her prey, her mind games surely will.",
-    "cardImage": "",
-    "avatarImage": "",
-    "themeColor": "#147b42",
-    "accentColor": "#32e875",
-    "gradient": "linear-gradient(145deg, #091e13 0%, #0d321d 50%, #07151e 100%)",
-    "abilities": [
-      { "name": "Snake Bite", "type": "Basic" },
-      { "name": "Poison Cloud", "type": "Basic" },
-      { "name": "Toxic Screen", "type": "Signature" },
-      { "name": "Viper's Pit", "type": "Ultimate" }
-    ]
+      "pick_percentage": "10.2%"
+    },
+    {
+      "name": "Sage",
+      "role": "Sentinel",
+      "nationality": "China",
+      "quote": "Your duty is not over!",
+      "pick_percentage": "4.0%"
+    },
+    {
+      "name": "Skye",
+      "role": "Initiator",
+      "nationality": "Australia",
+      "quote": "Seek them out!",
+      "pick_percentage": "2.8%"
     },
     {
       "name": "Sova",
