@@ -5,203 +5,232 @@
       "role": "Controller",
       "nationality": "Ghana",
       "quote": "You divide, they fall.",
-      "pick_percentage": "1.2%"
+      "pick_percentage": "1.2%",
+      "cardImage": "img/astra.jfif"
     },
     {
       "name": "Breach",
       "role": "Initiator",
       "nationality": "Sweden",
       "quote": "Off your feet!",
-      "pick_percentage": "2.0%"
+      "pick_percentage": "2.0%",
+      "cardImage": "img/breach.jfif"
     },
     {
       "name": "Brimstone",
       "role": "Controller",
       "nationality": "United States",
       "quote": "Open up the sky!",
-      "pick_percentage": "1.7%"
+      "pick_percentage": "1.7%",
+      "cardImage": "img/brimstone.jfif"
     },
     {
       "name": "Chamber",
       "role": "Sentinel",
       "nationality": "France",
       "quote": "You have good taste, my friend.",
-      "pick_percentage": "2.7%"
+      "pick_percentage": "2.7%",
+      "cardImage": "img/chamber.jpg"
     },
     {
       "name": "Clove",
       "role": "Controller",
       "nationality": "Scotland (United Kingdom)",
       "quote": "Not dead yet!",
-      "pick_percentage": "8.1%"
+      "pick_percentage": "8.1%",
+      "cardImage": "img/clove.jfif"
     },
     {
       "name": "Cypher",
       "role": "Sentinel",
       "nationality": "Morocco",
       "quote": "I know exactly where you are.",
-      "pick_percentage": "4.7%"
+      "pick_percentage": "4.7%",
+      "cardImage": "img/cypher.jfif"
     },
     {
       "name": "Deadlock",
       "role": "Sentinel",
       "nationality": "Norway",
       "quote": "My territory, my rules.",
-      "pick_percentage": "2.4%"
+      "pick_percentage": "2.4%",
+      "cardImage": "img/deadlock.jpeg"
     },
     {
       "name": "Fade",
       "role": "Initiator",
       "nationality": "Turkey",
       "quote": "Face your fear.",
-      "pick_percentage": "3.0%"
+      "pick_percentage": "3.0%",
+      "cardImage": "img/fade.jpg"
     },
     {
       "name": "Gekko",
       "role": "Initiator",
       "nationality": "United States",
       "quote": "Wingman, let's go!",
-      "pick_percentage": "3.8%"
+      "pick_percentage": "3.8%",
+      "cardImage": "img/gekko.jfif"
     },
     {
       "name": "Harbor",
       "role": "Controller",
       "nationality": "India",
       "quote": "Let the tides turn.",
-      "pick_percentage": "1.1%"
+      "pick_percentage": "1.1%",
+      "cardImage": "img/harbor.jfif"
     },
     {
       "name": "Iso",
       "role": "Duelist",
       "nationality": "China",
       "quote": "It's just you and me.",
-      "pick_percentage": "4.9%"
+      "pick_percentage": "4.9%",
+      "cardImage": "img/iso.jfif"
     },
     {
       "name": "Jett",
       "role": "Duelist",
       "nationality": "South Korea",
       "quote": "Watch this!",
-      "pick_percentage": "9.4%"
+      "pick_percentage": "9.4%",
+      "cardImage": "img/jett.jpg"
     },
     {
       "name": "KAY/O",
       "role": "Initiator",
       "nationality": "Alternate Earth (Robot)",
       "quote": "No one walks away.",
-      "pick_percentage": "1.8%"
+      "pick_percentage": "1.8%",
+      "cardImage": "img/kayo.jfif"
     },
     {
       "name": "Killjoy",
       "role": "Sentinel",
       "nationality": "Germany",
       "quote": "Don't stress, I've already thought of everything.",
-      "pick_percentage": "4.2%"
+      "pick_percentage": "4.2%",
+      "cardImage": "img/killjoy.jfif"
     },
     {
       "name": "Miks",
       "role": "Controller",
       "nationality": "Croatia",
       "quote": "Breathe in, let's reset.",
-      "pick_percentage": "1.3%"
+      "pick_percentage": "1.3%",
+      "cardImage": "img/miks.jpg"
     },
     {
       "name": "Neon",
       "role": "Duelist",
       "nationality": "Philippines",
       "quote": "Here we go!",
-      "pick_percentage": "2.3%"
+      "pick_percentage": "2.3%",
+      "cardImage": "img/neon.jpg"
     },
     {
       "name": "Omen",
       "role": "Controller",
       "nationality": "Unknown",
       "quote": "Scatter!",
-      "pick_percentage": "7.0%"
+      "pick_percentage": "7.0%",
+      "cardImage": "img/omen.jpeg"
     },
     {
       "name": "Phoenix",
       "role": "Duelist",
       "nationality": "United Kingdom",
       "quote": "Joke's over, you're dead!",
-      "pick_percentage": "3.5%"
+      "pick_percentage": "3.5%",
+      "cardImage": "img/phoenix.jfif"
     },
     {
       "name": "Raze",
       "role": "Duelist",
       "nationality": "Brazil",
       "quote": "Here comes the party!",
-      "pick_percentage": "4.1%"
+      "pick_percentage": "4.1%",
+      "cardImage": "img/raze.jfif"
     },
     {
       "name": "Reyna",
       "role": "Duelist",
       "nationality": "Mexico",
       "quote": "They will cower!",
-      "pick_percentage": "10.2%"
+      "pick_percentage": "10.2%",
+      "cardImage": "img/reyna.jpeg"
     },
     {
       "name": "Sage",
       "role": "Sentinel",
       "nationality": "China",
       "quote": "Your duty is not over!",
-      "pick_percentage": "4.0%"
+      "pick_percentage": "4.0%",
+      "cardImage": "img/sage.jfif"
     },
     {
       "name": "Skye",
       "role": "Initiator",
       "nationality": "Australia",
       "quote": "Seek them out!",
-      "pick_percentage": "2.8%"
+      "pick_percentage": "2.8%",
+      "cardImage": "img/skye.jfif"
     },
     {
       "name": "Sova",
       "role": "Initiator",
       "nationality": "Russia",
       "quote": "I am the hunter!",
-      "pick_percentage": "4.5%"
+      "pick_percentage": "4.5%",
+      "cardImage": "img/sova.jfif"
     },
     {
       "name": "Tejo",
       "role": "Initiator",
       "nationality": "Colombia",
       "quote": "Armageddon incoming.",
-      "pick_percentage": "1.5%"
+      "pick_percentage": "1.5%",
+      "cardImage": "img/tejo.jfif"
     },
     {
       "name": "Veto",
       "role": "Sentinel",
       "nationality": "Senegal",
       "quote": "Clear the path.",
-      "pick_percentage": "1.0%"
+      "pick_percentage": "1.0%",
+      "cardImage": "img/veto.jfif"
     },
     {
       "name": "Viper",
       "role": "Controller",
       "nationality": "United States",
       "quote": "Welcome to my world!",
-      "pick_percentage": "3.2%"
+      "pick_percentage": "3.2%",
+      "cardImage": "img/viper.jpg"
     },
     {
       "name": "Vyse",
       "role": "Sentinel",
       "nationality": "Unknown",
       "quote": "Steel your resolve.",
-      "pick_percentage": "2.2%"
+      "pick_percentage": "2.2%",
+      "cardImage": "img/vyse.jfif"
     },
     {
       "name": "Waylay",
       "role": "Duelist",
       "nationality": "Thailand",
       "quote": "Catch me if you can.",
-      "pick_percentage": "2.6%"
+      "pick_percentage": "2.6%",
+      "cardImage": "img/waylay.jfif"
     },
     {
       "name": "Yoru",
       "role": "Duelist",
       "nationality": "Japan",
       "quote": "I'll handle this.",
-      "pick_percentage": "1.9%"
+      "pick_percentage": "1.9%",
+      "cardImage": "img/yoru.jfif"
     }
   ]
 }

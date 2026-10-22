@@ -339,9 +339,9 @@
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
     }
 
-    /* Left Side: Calling Card Artwork Banner */
+    /* Left Side: Calling Card Artwork Banner (Widened for optimal card art display) */
     .card-banner-art {
-      flex: 0 0 135px;
+      flex: 0 0 160px;
       position: relative;
       background: var(--card-art-bg);
       display: flex;
@@ -358,11 +358,17 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      object-position: center;
       display: none;
+      transition: transform 0.3s ease;
     }
 
     .card-image-display.active {
       display: block;
+    }
+
+    .agent-card:hover .card-image-display {
+      transform: scale(1.05);
     }
 
     .banner-fallback {
@@ -519,8 +525,9 @@
       width: 100%;
       background: #141720;
       border: 1px solid #282d3e;
-      border-radius: 14px;
-      padding: 2.25rem 2rem 2rem;
+      border-radius: 16px;
+      overflow: hidden;
+      padding: 0;
       text-align: center;
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
       transform: translateY(10px);
@@ -531,20 +538,59 @@
       transform: translateY(0);
     }
 
-    .modal-quote-icon {
-      font-size: 2rem;
-      color: var(--text-muted);
-      opacity: 0.6;
-      line-height: 1;
-      margin-bottom: 0.5rem;
+    /* Modal Calling Card Banner Artwork */
+    .modal-banner-wrap {
+      position: relative;
+      width: 100%;
+      height: 180px;
+      overflow: hidden;
+      background: #0d0f14;
+    }
+
+    .modal-banner-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .modal-banner-gradient {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(20, 23, 32, 0.1) 0%, rgba(20, 23, 32, 0.65) 60%, #141720 100%);
+    }
+
+    .modal-quote-badge {
+      position: absolute;
+      bottom: -16px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 44px;
+      height: 44px;
+      background: #1c2130;
+      border: 1px solid #333a4e;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: #93c5fd;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+      z-index: 5;
+    }
+
+    .modal-body-content {
+      padding: 1.85rem 2rem 2.25rem;
     }
 
     .modal-quote-content {
-      font-size: 2.05rem;
+      font-size: 1.85rem;
       font-weight: 800;
       line-height: 1.3;
       color: var(--text-primary);
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
+      margin-top: 0.25rem;
     }
 
     .modal-agent-label {
@@ -577,6 +623,15 @@
     }
 
     /* RESPONSIVE DESIGN */
+    @media (max-width: 1250px) {
+      .card-banner-art {
+        flex: 0 0 145px;
+      }
+      .agent-name {
+        font-size: 1.4rem;
+      }
+    }
+
     @media (max-width: 1100px) {
       .agents-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -596,8 +651,14 @@
       .catalog-title {
         font-size: 1.4rem;
       }
+      .modal-banner-wrap {
+        height: 140px;
+      }
       .modal-quote-content {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
+      }
+      .modal-body-content {
+        padding: 1.5rem 1.25rem 1.75rem;
       }
       .controls-bar {
         flex-direction: column;
@@ -607,7 +668,7 @@
         justify-content: space-between;
       }
       .card-banner-art {
-        flex: 0 0 110px;
+        flex: 0 0 120px;
       }
       .agent-name {
         font-size: 1.35rem;
@@ -698,13 +759,21 @@
   <!-- POP UP MODAL THAT GIVES THE SCREEN QUOTES THEN TAP TO REMOVE -->
   <div class="quote-modal-overlay" id="quoteModalOverlay" role="dialog" aria-modal="true" aria-label="Agent Quote Modal">
     <div class="quote-modal-box">
-      <div class="modal-quote-icon">
-        <i class="bi bi-quote"></i>
+      <!-- Modal Calling Card Banner Artwork -->
+      <div class="modal-banner-wrap" id="modalBannerWrap">
+        <img src="" alt="" id="modalBannerImg" class="modal-banner-img" />
+        <div class="modal-banner-gradient"></div>
+        <div class="modal-quote-badge">
+          <i class="bi bi-quote"></i>
+        </div>
       </div>
-      <div class="modal-quote-content" id="modalQuoteContent">"Scatter!"</div>
-      <div class="modal-agent-label" id="modalAgentLabel">OMEN · CONTROLLER</div>
-      <p class="modal-context-desc" id="modalContextDesc">Pick Rate: 7.0% · Unknown</p>
-      <div class="modal-tap-hint">TAP ANYWHERE TO REMOVE</div>
+
+      <div class="modal-body-content">
+        <div class="modal-quote-content" id="modalQuoteContent">"Scatter!"</div>
+        <div class="modal-agent-label" id="modalAgentLabel">OMEN · CONTROLLER</div>
+        <p class="modal-context-desc" id="modalContextDesc">Pick Rate: 7.0% · Unknown</p>
+        <div class="modal-tap-hint">TAP ANYWHERE TO REMOVE</div>
+      </div>
     </div>
   </div>
 
@@ -712,35 +781,35 @@
     // Embedded copy of the exact user val.json in case file:// protocol blocks local fetch()
     const EXACT_VAL_JSON = {
       "agents": [
-        { "name": "Astra", "role": "Controller", "nationality": "Ghana", "quote": "You divide, they fall.", "pick_percentage": "1.2%" },
-        { "name": "Breach", "role": "Initiator", "nationality": "Sweden", "quote": "Off your feet!", "pick_percentage": "2.0%" },
-        { "name": "Brimstone", "role": "Controller", "nationality": "United States", "quote": "Open up the sky!", "pick_percentage": "1.7%" },
-        { "name": "Chamber", "role": "Sentinel", "nationality": "France", "quote": "You have good taste, my friend.", "pick_percentage": "2.7%" },
-        { "name": "Clove", "role": "Controller", "nationality": "Scotland (United Kingdom)", "quote": "Not dead yet!", "pick_percentage": "8.1%" },
-        { "name": "Cypher", "role": "Sentinel", "nationality": "Morocco", "quote": "I know exactly where you are.", "pick_percentage": "4.7%" },
-        { "name": "Deadlock", "role": "Sentinel", "nationality": "Norway", "quote": "My territory, my rules.", "pick_percentage": "2.4%" },
-        { "name": "Fade", "role": "Initiator", "nationality": "Turkey", "quote": "Face your fear.", "pick_percentage": "3.0%" },
-        { "name": "Gekko", "role": "Initiator", "nationality": "United States", "quote": "Wingman, let's go!", "pick_percentage": "3.8%" },
-        { "name": "Harbor", "role": "Controller", "nationality": "India", "quote": "Let the tides turn.", "pick_percentage": "1.1%" },
-        { "name": "Iso", "role": "Duelist", "nationality": "China", "quote": "It's just you and me.", "pick_percentage": "4.9%" },
-        { "name": "Jett", "role": "Duelist", "nationality": "South Korea", "quote": "Watch this!", "pick_percentage": "9.4%" },
-        { "name": "KAY/O", "role": "Initiator", "nationality": "Alternate Earth (Robot)", "quote": "No one walks away.", "pick_percentage": "1.8%" },
-        { "name": "Killjoy", "role": "Sentinel", "nationality": "Germany", "quote": "Don't stress, I've already thought of everything.", "pick_percentage": "4.2%" },
-        { "name": "Miks", "role": "Controller", "nationality": "Croatia", "quote": "Breathe in, let's reset.", "pick_percentage": "1.3%" },
-        { "name": "Neon", "role": "Duelist", "nationality": "Philippines", "quote": "Here we go!", "pick_percentage": "2.3%" },
-        { "name": "Omen", "role": "Controller", "nationality": "Unknown", "quote": "Scatter!", "pick_percentage": "7.0%" },
-        { "name": "Phoenix", "role": "Duelist", "nationality": "United Kingdom", "quote": "Joke's over, you're dead!", "pick_percentage": "3.5%" },
-        { "name": "Raze", "role": "Duelist", "nationality": "Brazil", "quote": "Here comes the party!", "pick_percentage": "4.1%" },
-        { "name": "Reyna", "role": "Duelist", "nationality": "Mexico", "quote": "They will cower!", "pick_percentage": "10.2%" },
-        { "name": "Sage", "role": "Sentinel", "nationality": "China", "quote": "Your duty is not over!", "pick_percentage": "4.0%" },
-        { "name": "Skye", "role": "Initiator", "nationality": "Australia", "quote": "Seek them out!", "pick_percentage": "2.8%" },
-        { "name": "Sova", "role": "Initiator", "nationality": "Russia", "quote": "I am the hunter!", "pick_percentage": "4.5%" },
-        { "name": "Tejo", "role": "Initiator", "nationality": "Colombia", "quote": "Armageddon incoming.", "pick_percentage": "1.5%" },
-        { "name": "Veto", "role": "Sentinel", "nationality": "Senegal", "quote": "Clear the path.", "pick_percentage": "1.0%" },
-        { "name": "Viper", "role": "Controller", "nationality": "United States", "quote": "Welcome to my world!", "pick_percentage": "3.2%" },
-        { "name": "Vyse", "role": "Sentinel", "nationality": "Unknown", "quote": "Steel your resolve.", "pick_percentage": "2.2%" },
-        { "name": "Waylay", "role": "Duelist", "nationality": "Thailand", "quote": "Catch me if you can.", "pick_percentage": "2.6%" },
-        { "name": "Yoru", "role": "Duelist", "nationality": "Japan", "quote": "I'll handle this.", "pick_percentage": "1.9%" }
+        { "name": "Astra", "role": "Controller", "nationality": "Ghana", "quote": "You divide, they fall.", "pick_percentage": "1.2%", "cardImage": "img/astra.jfif" },
+        { "name": "Breach", "role": "Initiator", "nationality": "Sweden", "quote": "Off your feet!", "pick_percentage": "2.0%", "cardImage": "img/breach.jfif" },
+        { "name": "Brimstone", "role": "Controller", "nationality": "United States", "quote": "Open up the sky!", "pick_percentage": "1.7%", "cardImage": "img/brimstone.jfif" },
+        { "name": "Chamber", "role": "Sentinel", "nationality": "France", "quote": "You have good taste, my friend.", "pick_percentage": "2.7%", "cardImage": "img/chamber.jpg" },
+        { "name": "Clove", "role": "Controller", "nationality": "Scotland (United Kingdom)", "quote": "Not dead yet!", "pick_percentage": "8.1%", "cardImage": "img/clove.jfif" },
+        { "name": "Cypher", "role": "Sentinel", "nationality": "Morocco", "quote": "I know exactly where you are.", "pick_percentage": "4.7%", "cardImage": "img/cypher.jfif" },
+        { "name": "Deadlock", "role": "Sentinel", "nationality": "Norway", "quote": "My territory, my rules.", "pick_percentage": "2.4%", "cardImage": "img/deadlock.jpeg" },
+        { "name": "Fade", "role": "Initiator", "nationality": "Turkey", "quote": "Face your fear.", "pick_percentage": "3.0%", "cardImage": "img/fade.jpg" },
+        { "name": "Gekko", "role": "Initiator", "nationality": "United States", "quote": "Wingman, let's go!", "pick_percentage": "3.8%", "cardImage": "img/gekko.jfif" },
+        { "name": "Harbor", "role": "Controller", "nationality": "India", "quote": "Let the tides turn.", "pick_percentage": "1.1%", "cardImage": "img/harbor.jfif" },
+        { "name": "Iso", "role": "Duelist", "nationality": "China", "quote": "It's just you and me.", "pick_percentage": "4.9%", "cardImage": "img/iso.jfif" },
+        { "name": "Jett", "role": "Duelist", "nationality": "South Korea", "quote": "Watch this!", "pick_percentage": "9.4%", "cardImage": "img/jett.jpg" },
+        { "name": "KAY/O", "role": "Initiator", "nationality": "Alternate Earth (Robot)", "quote": "No one walks away.", "pick_percentage": "1.8%", "cardImage": "img/kayo.jfif" },
+        { "name": "Killjoy", "role": "Sentinel", "nationality": "Germany", "quote": "Don't stress, I've already thought of everything.", "pick_percentage": "4.2%", "cardImage": "img/killjoy.jfif" },
+        { "name": "Miks", "role": "Controller", "nationality": "Croatia", "quote": "Breathe in, let's reset.", "pick_percentage": "1.3%", "cardImage": "img/miks.jpg" },
+        { "name": "Neon", "role": "Duelist", "nationality": "Philippines", "quote": "Here we go!", "pick_percentage": "2.3%", "cardImage": "img/neon.jpg" },
+        { "name": "Omen", "role": "Controller", "nationality": "Unknown", "quote": "Scatter!", "pick_percentage": "7.0%", "cardImage": "img/omen.jpeg" },
+        { "name": "Phoenix", "role": "Duelist", "nationality": "United Kingdom", "quote": "Joke's over, you're dead!", "pick_percentage": "3.5%", "cardImage": "img/phoenix.jfif" },
+        { "name": "Raze", "role": "Duelist", "nationality": "Brazil", "quote": "Here comes the party!", "pick_percentage": "4.1%", "cardImage": "img/raze.jfif" },
+        { "name": "Reyna", "role": "Duelist", "nationality": "Mexico", "quote": "They will cower!", "pick_percentage": "10.2%", "cardImage": "img/reyna.jpeg" },
+        { "name": "Sage", "role": "Sentinel", "nationality": "China", "quote": "Your duty is not over!", "pick_percentage": "4.0%", "cardImage": "img/sage.jfif" },
+        { "name": "Skye", "role": "Initiator", "nationality": "Australia", "quote": "Seek them out!", "pick_percentage": "2.8%", "cardImage": "img/skye.jfif" },
+        { "name": "Sova", "role": "Initiator", "nationality": "Russia", "quote": "I am the hunter!", "pick_percentage": "4.5%", "cardImage": "img/sova.jfif" },
+        { "name": "Tejo", "role": "Initiator", "nationality": "Colombia", "quote": "Armageddon incoming.", "pick_percentage": "1.5%", "cardImage": "img/tejo.jfif" },
+        { "name": "Veto", "role": "Sentinel", "nationality": "Senegal", "quote": "Clear the path.", "pick_percentage": "1.0%", "cardImage": "img/veto.jfif" },
+        { "name": "Viper", "role": "Controller", "nationality": "United States", "quote": "Welcome to my world!", "pick_percentage": "3.2%", "cardImage": "img/viper.jpg" },
+        { "name": "Vyse", "role": "Sentinel", "nationality": "Unknown", "quote": "Steel your resolve.", "pick_percentage": "2.2%", "cardImage": "img/vyse.jfif" },
+        { "name": "Waylay", "role": "Duelist", "nationality": "Thailand", "quote": "Catch me if you can.", "pick_percentage": "2.6%", "cardImage": "img/waylay.jfif" },
+        { "name": "Yoru", "role": "Duelist", "nationality": "Japan", "quote": "I'll handle this.", "pick_percentage": "1.9%", "cardImage": "img/yoru.jfif" }
       ]
     };
 
@@ -748,6 +817,40 @@
     let selectedRole = "all";
     let searchQuery = "";
     let currentSort = "default";
+
+    // Pre-mapped agent calling card images dictionary
+    const AGENT_IMAGES = {
+      "astra": "img/astra.jfif",
+      "breach": "img/breach.jfif",
+      "brimstone": "img/brimstone.jfif",
+      "chamber": "img/chamber.jpg",
+      "clove": "img/clove.jfif",
+      "cypher": "img/cypher.jfif",
+      "deadlock": "img/deadlock.jpeg",
+      "fade": "img/fade.jpg",
+      "gekko": "img/gekko.jfif",
+      "harbor": "img/harbor.jfif",
+      "iso": "img/iso.jfif",
+      "jett": "img/jett.jpg",
+      "kay/o": "img/kayo.jfif",
+      "kayo": "img/kayo.jfif",
+      "killjoy": "img/killjoy.jfif",
+      "miks": "img/miks.jpg",
+      "neon": "img/neon.jpg",
+      "omen": "img/omen.jpeg",
+      "phoenix": "img/phoenix.jfif",
+      "raze": "img/raze.jfif",
+      "reyna": "img/reyna.jpeg",
+      "sage": "img/sage.jfif",
+      "skye": "img/skye.jfif",
+      "sova": "img/sova.jfif",
+      "tejo": "img/tejo.jfif",
+      "veto": "img/veto.jfif",
+      "viper": "img/viper.jpg",
+      "vyse": "img/vyse.jfif",
+      "waylay": "img/waylay.jfif",
+      "yoru": "img/yoru.jfif"
+    };
 
     // DOM Elements
     const agentsGrid = document.getElementById('agentsGrid');
@@ -760,6 +863,8 @@
     const modalQuoteContent = document.getElementById('modalQuoteContent');
     const modalAgentLabel = document.getElementById('modalAgentLabel');
     const modalContextDesc = document.getElementById('modalContextDesc');
+    const modalBannerWrap = document.getElementById('modalBannerWrap');
+    const modalBannerImg = document.getElementById('modalBannerImg');
 
     // Parse pick rate string (e.g. "9.4%" -> 9.4)
     function parsePickRate(str) {
@@ -839,7 +944,8 @@
         card.className = 'agent-card';
         card.setAttribute('tabindex', '0');
 
-        const cardImg = (agent.cardImage || agent.image || agent.avatar || agent.picture || "").trim();
+        const defaultImg = AGENT_IMAGES[(agent.name || "").toLowerCase().trim()] || "";
+        const cardImg = (agent.cardImage || agent.image || agent.avatar || agent.picture || defaultImg).trim();
         const hasCardImg = cardImg !== "";
         const agentName = agent.name || "Agent";
         const agentRole = agent.role || "Specialist";
@@ -849,7 +955,7 @@
         card.innerHTML = `
           <!-- Left: Calling Card Banner Artwork -->
           <div class="card-banner-art">
-            ${hasCardImg ? `<img src="${cardImg}" alt="${agentName}" class="card-image-display active" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />` : ''}
+            ${hasCardImg ? `<img src="${cardImg}" alt="${agentName}" class="card-image-display active" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />` : ''}
             
             <div class="banner-fallback" style="${hasCardImg ? 'display: none;' : ''}">
               <div class="banner-initial">${agentName.charAt(0)}</div>
@@ -899,6 +1005,17 @@
       modalQuoteContent.textContent = `"${agent.quote || 'Ready for action.'}"`;
       modalAgentLabel.textContent = `${agent.name || 'Agent'} · ${agent.role || 'Specialist'}`;
       modalContextDesc.textContent = `${agent.nationality ? `Origin: ${agent.nationality}  ·  ` : ''}${agent.pick_percentage ? `Pick Rate: ${agent.pick_percentage}` : ''}`;
+
+      const defaultImg = AGENT_IMAGES[(agent.name || "").toLowerCase().trim()] || "";
+      const cardImg = (agent.cardImage || agent.image || agent.avatar || agent.picture || defaultImg).trim();
+      if (cardImg) {
+        modalBannerImg.src = cardImg;
+        modalBannerImg.alt = agent.name || 'Agent';
+        modalBannerWrap.style.display = 'block';
+      } else {
+        modalBannerWrap.style.display = 'none';
+      }
+
       quoteModalOverlay.classList.add('active');
     }
 
