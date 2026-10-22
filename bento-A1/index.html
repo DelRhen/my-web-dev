@@ -23,7 +23,6 @@
       position: relative;
     }
 
-    /* Subtle glow effects */
     body::before {
       content: "";
       position: fixed;
@@ -78,7 +77,6 @@
       box-shadow: 0 10px 35px rgba(20, 10, 60, 0.6);
     }
 
-    /* Vignette — cinematic dark edges */
     .bento-card .bento-vignette {
       position: absolute;
       top: 0;
@@ -91,7 +89,6 @@
       pointer-events: none;
     }
 
-    /* Bento Background Image — natural brightness */
     .bento-card .bento-bg-img {
       position: absolute;
       top: 0;
@@ -110,7 +107,6 @@
       opacity: 1;
     }
 
-    /* Very subtle tinted overlay — keeps images looking natural */
     .bento-card .bento-overlay {
       position: absolute;
       top: 0;
@@ -122,7 +118,6 @@
       pointer-events: none;
     }
 
-    /* Text content container floating above image */
     .bento-card .bento-content {
       position: relative;
       z-index: 3;
@@ -161,7 +156,6 @@
       }
     }
 
-    /* Scroll Reveal Stagger */
     .bento-card {
       opacity: 0;
       transform: translateY(30px);
@@ -173,7 +167,6 @@
       transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
-    /* Floating Particles Canvas */
     #particles-canvas {
       position: fixed;
       top: 0;
@@ -202,11 +195,8 @@
       </div>
     </div>
 
-    <!-- Bento-A1 Grid -->
     <div class="row g-3 mb-3">
-      <!-- LEFT COLUMN: col-3 -->
       <div class="col-12 col-md-3 d-flex flex-column gap-3">
-        <!-- CARD 1 -->
         <div class="bento-card" style="height: 220px;">
           <img src="../assets/img/card1.jpg" alt="card 1" class="bento-bg-img" loading="lazy" />
           <div class="bento-overlay"></div>
@@ -215,7 +205,6 @@
           </div>
         </div>
 
-        <!-- CARD 2 -->
         <div class="bento-card" style="height: 220px;">
           <img src="../assets/img/omen2.jfif" alt="Omen2" class="bento-bg-img" loading="lazy" />
           <div class="bento-overlay"></div>
@@ -224,7 +213,6 @@
           </div>
         </div>
 
-        <!-- CARD 3A & 3B -->
         <div class="row g-3">
           <div class="col-6">
             <div class="bento-card" style="height: 220px;">
@@ -247,11 +235,9 @@
         </div>
       </div>
 
-      <!-- RIGHT COLUMN: col-9 -->
       <div class="col-12 col-md-9">
         <div class="row g-3">
           <div class="col-12 col-md-9">
-            <!-- TOP SUB-ROW: CARD 4 & 5 -->
             <div class="row g-3 mb-3">
               <div class="col-6">
                 <div class="bento-card" style="height: 220px;">
@@ -273,12 +259,9 @@
               </div>
             </div>
 
-            <!-- BOTTOM SUB-ROW: CARD 6 -->
             <div class="row g-3">
               <div class="col-12">
                 <div class="bento-card" style="height: 456px;">
-                  <!-- Scale value controls the zoom level -->
-                  <!-- Zoom out + shift focus upward -->
                   <img src="../assets/img/rhendel.jfif" alt="Rhendel" class="bento-bg-img" loading="lazy"
                     style="transform: scale(1); object-position: center 70%;" />
                   <div class="bento-overlay"></div>
@@ -290,7 +273,6 @@
             </div>
           </div>
 
-          <!-- INNER RIGHT: CARD 7 -->
           <div class="col-12 col-md-3">
             <div class="bento-card h-100" style="min-height: 300px;">
               <img src="../assets/img/neon.gif" alt="Card 7" class="bento-bg-img" loading="lazy" />
@@ -304,7 +286,6 @@
       </div>
     </div>
 
-    <!-- ROW 2: 3 COLUMNS (CARDS 8, 9, 10) -->
     <div class="row g-3">
       <div class="col-12 col-md-4">
         <div class="bento-card" style="height: 220px;">
@@ -338,7 +319,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // === FULLSCREEN TOGGLE ===
     const fsToggleBtn = document.getElementById('fsToggleBtn');
     if (fsToggleBtn) {
       fsToggleBtn.addEventListener('click', () => {
@@ -361,7 +341,6 @@
       });
     }
 
-    // === FLOATING PARTICLES ===
     (function () {
       const canvas = document.getElementById('particles-canvas');
       if (!canvas) return;
@@ -384,7 +363,7 @@
           speedX: (Math.random() - 0.5) * 0.3,
           speedY: (Math.random() - 0.5) * 0.3,
           opacity: Math.random() * 0.4 + 0.1,
-          hue: Math.random() > 0.5 ? 260 : 220, // violet or blue
+          hue: Math.random() > 0.5 ? 260 : 220,
         };
       }
 
@@ -398,7 +377,6 @@
           p.x += p.speedX;
           p.y += p.speedY;
 
-          // Wrap around screen
           if (p.x < 0) p.x = canvas.width;
           if (p.x > canvas.width) p.x = 0;
           if (p.y < 0) p.y = canvas.height;
@@ -414,10 +392,9 @@
       animate();
     })();
 
-    // === 3D TILT PARALLAX ===
     (function () {
       const cards = document.querySelectorAll('.bento-card');
-      const MAX_TILT = 6; // degrees
+      const MAX_TILT = 6; 
 
       cards.forEach(card => {
         card.addEventListener('mousemove', (e) => {
@@ -439,7 +416,7 @@
       });
     })();
 
-    // === SCROLL REVEAL STAGGER ===
+    
     (function () {
       const cards = document.querySelectorAll('.bento-card');
 
@@ -447,7 +424,6 @@
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry, i) => {
             if (entry.isIntersecting) {
-              // Stagger delay based on index
               const index = Array.from(cards).indexOf(entry.target);
               entry.target.style.transitionDelay = `${index * 80}ms`;
               entry.target.classList.add('revealed');
@@ -458,7 +434,6 @@
 
         cards.forEach(card => observer.observe(card));
       } else {
-        // Fallback: reveal all immediately
         cards.forEach(card => card.classList.add('revealed'));
       }
     })();

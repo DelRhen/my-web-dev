@@ -5,15 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Agent Calling Cards · JSON-A2</title>
 
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
 
-  <!-- Google Font: Poppins -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
 
   <style>
@@ -681,7 +678,6 @@
 </head>
 <body>
 
-  <!-- Top Navigation Bar -->
   <header class="top-nav">
     <a href="../index.html" class="brand-link" title="Return to Projects Hub">
       <span class="brand-tag">JSON-A2</span>
@@ -693,10 +689,8 @@
     </a>
   </header>
 
-  <!-- Main Container -->
   <main class="main-container">
 
-    <!-- Header Section -->
     <header class="catalog-header">
       <div class="header-text-row">
         <div>
@@ -706,7 +700,6 @@
         <span class="agent-counter-badge" id="agentCounter">Showing 29 of 29 cards</span>
       </div>
 
-      <!-- Controls: Search, Filters & Sort -->
       <div class="controls-bar">
         <div class="search-input-wrapper">
           <i class="bi bi-search"></i>
@@ -724,7 +717,6 @@
         </div>
 
         <div class="filter-sort-group">
-          <!-- Filter Pills -->
           <div class="filter-pills" id="filterPills">
             <button class="filter-pill active" data-role="all">All</button>
             <button class="filter-pill" data-role="Duelist">Duelist</button>
@@ -733,7 +725,6 @@
             <button class="filter-pill" data-role="Sentinel">Sentinel</button>
           </div>
 
-          <!-- Sort Dropdown -->
           <div class="sort-wrapper">
             <span class="sort-label"><i class="bi bi-arrow-down-up me-1"></i>Sort:</span>
             <select class="sort-select" id="sortSelect" title="Sort calling cards">
@@ -749,17 +740,13 @@
       </div>
     </header>
 
-    <!-- 3 CARDS PER ROW GRID (HORIZONTAL CALLING CARDS) -->
     <section class="agents-grid" id="agentsGrid" aria-label="Calling Cards Grid">
-      <!-- 29 Horizontal Cards rendered dynamically -->
     </section>
 
   </main>
 
-  <!-- POP UP MODAL THAT GIVES THE SCREEN QUOTES THEN TAP TO REMOVE -->
   <div class="quote-modal-overlay" id="quoteModalOverlay" role="dialog" aria-modal="true" aria-label="Agent Quote Modal">
     <div class="quote-modal-box">
-      <!-- Modal Calling Card Banner Artwork -->
       <div class="modal-banner-wrap" id="modalBannerWrap">
         <img src="" alt="" id="modalBannerImg" class="modal-banner-img" />
         <div class="modal-banner-gradient"></div>
@@ -778,7 +765,6 @@
   </div>
 
   <script>
-    // Embedded copy of the exact user val.json in case file:// protocol blocks local fetch()
     const EXACT_VAL_JSON = {
       "agents": [
         { "name": "Astra", "role": "Controller", "nationality": "Ghana", "quote": "You divide, they fall.", "pick_percentage": "1.2%", "cardImage": "img/astra.jfif" },
@@ -818,7 +804,6 @@
     let searchQuery = "";
     let currentSort = "default";
 
-    // Pre-mapped agent calling card images dictionary
     const AGENT_IMAGES = {
       "astra": "img/astra.jfif",
       "breach": "img/breach.jfif",
@@ -852,7 +837,6 @@
       "yoru": "img/yoru.jfif"
     };
 
-    // DOM Elements
     const agentsGrid = document.getElementById('agentsGrid');
     const searchInput = document.getElementById('searchInput');
     const clearSearchBtn = document.getElementById('clearSearchBtn');
@@ -866,14 +850,12 @@
     const modalBannerWrap = document.getElementById('modalBannerWrap');
     const modalBannerImg = document.getElementById('modalBannerImg');
 
-    // Parse pick rate string (e.g. "9.4%" -> 9.4)
     function parsePickRate(str) {
       if (!str) return 0;
       const num = parseFloat(str.replace('%', ''));
       return isNaN(num) ? 0 : num;
     }
 
-    // Load val.json
     async function loadData() {
       try {
         const res = await fetch('./val.json');
@@ -888,11 +870,9 @@
       setupEvents();
     }
 
-    // Filter & Sort Logic
     function getProcessedAgents() {
       const q = searchQuery.trim().toLowerCase();
 
-      // Filter
       let result = allAgents.filter(agent => {
         const matchesRole = (selectedRole === 'all') || 
                             (agent.role && agent.role.toLowerCase() === selectedRole.toLowerCase());
@@ -906,7 +886,6 @@
         return matchesRole && matchesSearch;
       });
 
-      // Sort
       if (currentSort === 'pick-desc') {
         result.sort((a, b) => parsePickRate(b.pick_percentage) - parsePickRate(a.pick_percentage));
       } else if (currentSort === 'pick-asc') {
@@ -922,7 +901,6 @@
       return result;
     }
 
-    // Render 3 Horizontal Calling Cards per row
     function renderCards() {
       const filtered = getProcessedAgents();
       agentCounter.textContent = `Showing ${filtered.length} of ${allAgents.length} cards`;
@@ -984,7 +962,6 @@
           </div>
         `;
 
-        // Card Click opens Quote Modal
         card.addEventListener('click', () => {
           showQuoteModal(agent);
         });
@@ -999,7 +976,6 @@
       });
     }
 
-    // Screen Quote Popup Modal (Tap anywhere to remove)
     function showQuoteModal(agent) {
       if (!agent) return;
       modalQuoteContent.textContent = `"${agent.quote || 'Ready for action.'}"`;
@@ -1023,9 +999,7 @@
       quoteModalOverlay.classList.remove('active');
     }
 
-    // Setup Event Listeners
     function setupEvents() {
-      // Search Input
       searchInput.addEventListener('input', (e) => {
         searchQuery = e.target.value;
         clearSearchBtn.style.display = searchQuery ? 'block' : 'none';
@@ -1040,7 +1014,6 @@
         renderCards();
       });
 
-      // Role Filter Buttons
       filterPills.forEach(pill => {
         pill.addEventListener('click', () => {
           filterPills.forEach(p => p.classList.remove('active'));
@@ -1050,18 +1023,15 @@
         });
       });
 
-      // Sort Select Dropdown
       sortSelect.addEventListener('change', (e) => {
         currentSort = e.target.value;
         renderCards();
       });
 
-      // Tap / Click anywhere on modal dismisses it
       quoteModalOverlay.addEventListener('click', () => {
         hideQuoteModal();
       });
 
-      // Escape key closes modal
       window.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
           hideQuoteModal();

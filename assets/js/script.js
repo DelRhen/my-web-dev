@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Navbar dynamic scroll effect
   const nav = document.getElementById('mainNav');
   if (nav) {
     window.addEventListener('scroll', () => {
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Mobile menu auto-close on navigation
   const navLinks = document.querySelectorAll('#navMenu .nav-link');
   navLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -26,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Dark / Light Theme Toggle (Matches Portfolio Behavior)
   const darkToggle = document.getElementById('darkToggle');
   const icon = darkToggle ? darkToggle.querySelector('i') : null;
 
@@ -40,7 +37,6 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // Check saved preference or default to dark mode
   let savedTheme = null;
   try {
     savedTheme = localStorage.getItem('theme');
@@ -59,7 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Fade In Up animations on scroll
   const fadeEls = document.querySelectorAll('.fade-in-up');
   if (fadeEls.length > 0 && 'IntersectionObserver' in window) {
     const observer = new IntersectionObserver((entries) => {
@@ -75,7 +70,6 @@ document.addEventListener('DOMContentLoaded', function () {
     fadeEls.forEach(el => el.classList.add('visible'));
   }
 
-  // Hero Mouse Parallax Effect (Portfolio signature style)
   const hero = document.getElementById('hero');
   if (hero) {
     hero.addEventListener('mousemove', (e) => {

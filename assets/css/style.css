@@ -58,9 +58,7 @@ body {
   flex-direction: column;
 }
 
-/* =====================
-   NAVBAR
-===================== */
+
 #mainNav {
   background: var(--nav-bg);
   border-bottom: 1px solid var(--border);
@@ -119,9 +117,7 @@ body {
   box-shadow: none !important;
 }
 
-/* =====================
-   HERO / INTRO SECTION
-===================== */
+
 #hero {
   position: relative;
   overflow: hidden;
@@ -182,9 +178,7 @@ body {
   border-radius: 2px;
 }
 
-/* =====================
-   BUTTONS
-===================== */
+
 .btn-primary-custom {
   background: var(--accent);
   color: var(--bg);
@@ -227,9 +221,6 @@ body {
   background-color: var(--bg-alt);
 }
 
-/* =====================
-   HERO PROJECT CARDS
-===================== */
 .hero-card {
   background: var(--card-bg);
   border: 1px solid var(--border);
@@ -293,9 +284,7 @@ body {
   margin-top: 4px;
 }
 
-/* =====================
-   BENTO-A1 PREVIEW STRIP
-===================== */
+
 .bento-preview-strip {
   display: flex;
   gap: 12px;
@@ -382,9 +371,7 @@ body {
   }
 }
 
-/* =====================
-   BENTO-A1 GRID (FULLSCREEN PAGE)
-===================== */
+
 
 .bento-box {
   background-color: var(--bento-card-bg);
@@ -414,7 +401,6 @@ body.dark .bento-box:hover {
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }
 
-/* Bento Background Image */
 .bento-box .bento-bg-img {
   position: absolute;
   top: 0;
@@ -433,7 +419,6 @@ body.dark .bento-box:hover {
   opacity: 0.7;
 }
 
-/* Gradient overlay for readability */
 .bento-box .bento-overlay {
   position: absolute;
   top: 0;
@@ -445,7 +430,6 @@ body.dark .bento-box:hover {
   pointer-events: none;
 }
 
-/* Text content floating above image */
 .bento-box .bento-content {
   position: relative;
   z-index: 3;
@@ -472,9 +456,7 @@ body.dark .bento-box:hover {
   text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8);
 }
 
-/* =====================
-   LOCKED PROJECT CARDS (CARDS 3, 4)
-===================== */
+
 .locked-project-card {
   display: flex;
   flex-direction: column;
@@ -547,9 +529,7 @@ body.dark .bento-box:hover {
   line-height: 1.4;
 }
 
-/* =====================
-   FOOTER
-===================== */
+
 footer {
   margin-top: auto;
   background: var(--bg-alt);
@@ -563,9 +543,7 @@ footer p {
   margin: 0;
 }
 
-/* =====================
-   ANIMATIONS & RESPONSIVENESS
-===================== */
+
 .fade-in-up {
   opacity: 0;
   transform: translateY(20px);
@@ -597,9 +575,7 @@ footer p {
   }
 }
 
-/* =====================
-   CALLING CARD PREVIEW (JSON-A2 HERO CARD)
-===================== */
+
 .calling-card-preview {
   display: flex;
   flex-direction: row;
