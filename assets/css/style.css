@@ -603,7 +603,7 @@ footer p {
 .calling-card-preview {
   display: flex;
   flex-direction: row;
-  background: #141720;
+  background: #1a1c22;
   border: 1px solid #222736;
   border-radius: 1rem;
   overflow: hidden;
@@ -616,8 +616,8 @@ footer p {
 
 .calling-card-preview:hover {
   transform: translateY(-3px);
-  background-color: #181c28;
-  border-color: rgba(59, 130, 246, 0.4);
+  background-color: #343947;
+  border-color: rgba(49, 58, 73, 0.4);
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
@@ -626,7 +626,7 @@ footer p {
   position: relative;
   overflow: hidden;
   background: #0f1218;
-  border-right: 1px solid #222736;
+  border-right: 1px solid #2e313a;
 }
 
 .calling-card-preview-banner img {
@@ -665,9 +665,9 @@ footer p {
   border-radius: 4px;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background: #11141c;
-  color: #93c5fd;
-  border: 1px solid #222838;
+  background: #1f1f20;
+  color: #a4cbfc;
+  border: 1px solid #444457;
 }
 
 .calling-card-preview-title {
