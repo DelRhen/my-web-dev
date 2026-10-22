@@ -473,26 +473,25 @@ body.dark .bento-box:hover {
 }
 
 /* =====================
-   LOCKED PROJECT CARDS (CARDS 2, 3, 4)
+   LOCKED PROJECT CARDS (CARDS 3, 4)
 ===================== */
 .locked-project-card {
-  min-height: 380px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 .locked-empty-state {
-  flex: 1;
-  min-height: 220px;
+  height: 160px;
   border: 2px dashed var(--border);
   border-radius: 1rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  text-align: center;
+  gap: 1.5rem;
+  padding: 1.25rem 2rem;
+  text-align: left;
   background: linear-gradient(135deg, rgba(125, 125, 125, 0.03) 0%, rgba(125, 125, 125, 0.01) 100%);
   position: relative;
   overflow: hidden;
@@ -504,19 +503,20 @@ body.dark .bento-box:hover {
 }
 
 .lock-icon-circle {
-  width: 68px;
-  height: 68px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   background: var(--bg-alt);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   color: var(--text-muted);
-  margin-bottom: 1.25rem;
+  margin-bottom: 0;
   box-shadow: var(--shadow);
   transition: transform 0.3s ease, color 0.3s ease;
+  flex-shrink: 0;
 }
 
 .locked-empty-state:hover .lock-icon-circle {
@@ -524,21 +524,27 @@ body.dark .bento-box:hover {
   color: var(--text);
 }
 
+.locked-text-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
 .locked-title {
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--text);
-  margin-bottom: 6px;
+  margin-bottom: 0;
 }
 
 .locked-desc {
   font-size: 0.85rem;
   color: var(--text-muted);
-  max-width: 260px;
+  max-width: unset;
   margin-bottom: 0;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 /* =====================
@@ -575,10 +581,6 @@ footer p {
   .hero-title {
     font-size: 2.2rem;
   }
-
-  .locked-project-card {
-    min-height: 320px;
-  }
 }
 
 @media (max-width: 576px) {
@@ -592,5 +594,138 @@ footer p {
 
   .bento-box {
     min-height: 120px !important;
+  }
+}
+
+/* =====================
+   CALLING CARD PREVIEW (JSON-A2 HERO CARD)
+===================== */
+.calling-card-preview {
+  display: flex;
+  flex-direction: row;
+  background: #141720;
+  border: 1px solid #222736;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 160px;
+  width: 100%;
+  text-decoration: none;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+.calling-card-preview:hover {
+  transform: translateY(-3px);
+  background-color: #181c28;
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+}
+
+.calling-card-preview-banner {
+  flex: 0 0 160px;
+  position: relative;
+  overflow: hidden;
+  background: #0f1218;
+  border-right: 1px solid #222736;
+}
+
+.calling-card-preview-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.calling-card-preview:hover .calling-card-preview-banner img {
+  transform: scale(1.08);
+}
+
+.calling-card-preview-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.1rem 1.4rem;
+  min-width: 0;
+}
+
+.calling-card-preview-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.calling-card-preview-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 9px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: #11141c;
+  color: #93c5fd;
+  border: 1px solid #222838;
+}
+
+.calling-card-preview-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #f3f4f6;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.calling-card-preview-author {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: #94a3b8;
+  margin-top: 4px;
+  display: block;
+}
+
+.calling-card-preview-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #38bdf8;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+
+.calling-card-preview:hover .calling-card-preview-cta {
+  color: #60a5fa;
+}
+
+.calling-card-preview-cta i {
+  transition: transform 0.2s ease;
+}
+
+.calling-card-preview:hover .calling-card-preview-cta i {
+  transform: translateX(4px);
+}
+
+@media (max-width: 768px) {
+  .locked-empty-state {
+    flex-direction: column;
+    height: auto;
+    min-height: 140px;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 1.5rem 1rem;
+  }
+  .calling-card-preview {
+    height: 135px;
+  }
+  .calling-card-preview-banner {
+    flex: 0 0 110px;
+  }
+  .calling-card-preview-title {
+    font-size: 1.1rem;
   }
 }
