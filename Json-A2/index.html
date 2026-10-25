@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Agent Calling Cards · JSON-A2</title>
+  <title>Valorant Agent Calling Cards · JSON-A2</title>
 
   <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
 
@@ -50,7 +50,6 @@
       -moz-osx-font-smoothing: grayscale;
     }
 
-    /* Top Navigation (Minimalist Dark Grey) */
     .top-nav {
       display: flex;
       justify-content: space-between;
@@ -110,7 +109,6 @@
       border-color: #353a4b;
     }
 
-    /* Main Container */
     .main-container {
       flex: 1;
       max-width: 1350px;
@@ -122,7 +120,6 @@
       gap: 1.75rem;
     }
 
-    /* Header Section */
     .catalog-header {
       display: flex;
       flex-direction: column;
@@ -163,7 +160,7 @@
       letter-spacing: 0.02em;
     }
 
-    /* Controls Bar: Search, Filters & Sort */
+    /* Search Bar */
     .controls-bar {
       display: flex;
       flex-wrap: wrap;
@@ -228,7 +225,6 @@
       color: var(--text-primary);
     }
 
-    /* Filter & Sort Group */
     .filter-sort-group {
       display: flex;
       flex-wrap: wrap;
@@ -269,7 +265,6 @@
       font-weight: 600;
     }
 
-    /* Sort Dropdown */
     .sort-wrapper {
       display: flex;
       align-items: center;
@@ -306,7 +301,6 @@
       font-family: var(--font-body);
     }
 
-    /* 3 CARDS PER ROW GRID */
     .agents-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -314,15 +308,14 @@
       width: 100%;
     }
 
-    /* HORIZONTAL CALLING CARD (UNIFORM BORDER - NO STRIPES) */
     .agent-card {
       background: var(--card-bg);
-      border: 1px solid var(--border-card); /* Uniform subtle border */
+      border: 1px solid var(--border-card); 
       border-radius: 12px;
       overflow: hidden;
       display: flex;
       flex-direction: row;
-      height: 175px; /* Clean spacious calling card proportion */
+      height: 175px; 
       cursor: pointer;
       transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
@@ -336,7 +329,6 @@
       box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
     }
 
-    /* Left Side: Calling Card Artwork Banner (Widened for optimal card art display) */
     .card-banner-art {
       flex: 0 0 160px;
       position: relative;
@@ -393,7 +385,6 @@
       text-transform: uppercase;
     }
 
-    /* Right Side: Information */
     .card-content {
       flex: 1;
       display: flex;
@@ -403,7 +394,6 @@
       min-width: 0;
     }
 
-    /* Top: Role & Pick Rate */
     .card-meta-row {
       display: flex;
       justify-content: space-between;
@@ -411,7 +401,6 @@
       gap: 0.5rem;
     }
 
-    /* UNIFORM NEUTRAL ROLE CHIP (NO ROLE COLORS) */
     .card-role-chip {
       font-size: 0.68rem;
       font-weight: 600;
@@ -424,7 +413,6 @@
       border: 1px solid #232734;
     }
 
-    /* NUMBER FONT IS ARIAL */
     .card-pick-chip {
       font-family: var(--font-number);
       font-size: 0.72rem;
@@ -436,7 +424,6 @@
       border-radius: 4px;
     }
 
-    /* Middle: Identity (BIGGER FONT SIZES) */
     .card-identity-row {
       display: flex;
       flex-direction: column;
@@ -444,7 +431,7 @@
     }
 
     .agent-name {
-      font-size: 1.55rem; /* Bigger name font */
+      font-size: 1.55rem; 
       font-weight: 800;
       color: var(--text-primary);
       text-transform: uppercase;
@@ -456,7 +443,7 @@
     }
 
     .agent-nat {
-      font-size: 0.92rem; /* Bigger nationality font */
+      font-size: 0.92rem; 
       font-weight: 500;
       color: var(--text-secondary);
       white-space: nowrap;
@@ -464,7 +451,6 @@
       text-overflow: ellipsis;
     }
 
-    /* Bottom: Full-Width Quote Snippet (QUOTE BUTTON REMOVED) */
     .card-quote-row {
       display: flex;
       align-items: center;
@@ -482,7 +468,6 @@
       width: 100%;
     }
 
-    /* Empty State */
     .empty-state {
       grid-column: 1 / -1;
       text-align: center;
@@ -496,7 +481,6 @@
       display: block;
     }
 
-    /* POP UP MODAL THAT GIVES THE SCREEN QUOTES THEN TAP TO REMOVE */
     .quote-modal-overlay {
       position: fixed;
       inset: 0;
@@ -509,7 +493,7 @@
       opacity: 0;
       pointer-events: none;
       transition: opacity 0.2s ease;
-      cursor: pointer; /* Tap to remove */
+      cursor: pointer; 
     }
 
     .quote-modal-overlay.active {
@@ -535,7 +519,6 @@
       transform: translateY(0);
     }
 
-    /* Modal Calling Card Banner Artwork */
     .modal-banner-wrap {
       position: relative;
       width: 100%;
@@ -619,7 +602,6 @@
       text-transform: uppercase;
     }
 
-    /* RESPONSIVE DESIGN */
     @media (max-width: 1250px) {
       .card-banner-art {
         flex: 0 0 145px;
