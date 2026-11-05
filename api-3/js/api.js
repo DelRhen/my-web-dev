@@ -6,6 +6,8 @@ const Api = (() => {
   const BASE_URL = 'https://valorant-api.com/v1';
   let cachedAgents = null;
   let cachePromise = null;
+  let cachedMaps = null;
+  let mapsCachePromise = null;
 
   return {
     /**
@@ -76,6 +78,79 @@ const Api = (() => {
         }
       } catch (err) {
         console.error(`Failed to fetch agent ${uuid}:`, err);
+        return { success: false, error: err.message };
+      }
+    },
+
+    /**
+     * Fetch all maps
+     * GET /maps
+     */
+    async getMaps(forceRefresh = false) {
+      if (!forceRefresh && cachedMaps) {
+        return { success: true, data: cachedMaps };
+      }
+
+      if (!forceRefresh && mapsCachePromise) {
+        return mapsCachePromise;
+      }
+
+      mapsCachePromise = (async () => {
+        try {
+          const res = await fetch(`${BASE_URL}/maps`);
+          if (!res.ok) {
+            throw new Error(`API returned status ${res.status}`);
+          }
+          const json = await res.json();
+          if (json && Array.isArray(json.data)) {
+            // Filter out maps without splash or test duplicates, prioritize playable competitive & active maps
+            // Sort alphabetically by default
+            const sorted = json.data.sort((a, b) => (a.displayName || '').localeCompare(b.displayName || ''));
+            cachedMaps = sorted;
+            return { success: true, data: sorted };
+          } else {
+            throw new Error('Malformed API response');
+          }
+        } catch (err) {
+          console.error('Failed to fetch maps:', err);
+          return { success: false, error: err.message };
+        } finally {
+          mapsCachePromise = null;
+        }
+      })();
+
+      return mapsCachePromise;
+    },
+
+    /**
+     * Fetch a single map by UUID
+     * GET /maps/{uuid}
+     */
+    async getMapByUuid(uuid) {
+      if (!uuid) return { success: false, error: 'No UUID provided' };
+
+      // Check if already in cache
+      if (cachedMaps) {
+        const found = cachedMaps.find(m => m.uuid.toLowerCase() === uuid.toLowerCase());
+        if (found) return { success: true, data: found };
+      }
+
+      try {
+        const res = await fetch(`${BASE_URL}/maps/${uuid}`);
+        if (!res.ok) {
+          if (res.status === 404) {
+            return { success: false, notFound: true, error: 'Map not found' };
+          }
+          throw new Error(`API returned status ${res.status}`);
+        }
+        const json = await res.json();
+        if (json && json.data) {
+          return { success: true, data: json.data };
+        } else {
+          throw new Error('Map data missing in response');
+        }
+      } catch (err) {
+        console.error(`Failed to fetch map ${uuid}:`, err);
         return { success: false, error: err.message };
       }
     },

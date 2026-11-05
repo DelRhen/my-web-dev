@@ -24,7 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const cleanHref = href.split('?')[0].split('#')[0];
       const cleanPath = path.substring(path.lastIndexOf('/') + 1);
 
-      if (cleanHref === cleanPath || (cleanHref === 'index.html' && (cleanPath === '' || cleanPath === '/'))) {
+      if (cleanHref === cleanPath || 
+          (cleanHref === 'index.html' && (cleanPath === '' || cleanPath === '/')) ||
+          (cleanHref === 'agents.html' && cleanPath === 'agent.html') ||
+          (cleanHref === 'maps.html' && cleanPath === 'map.html')) {
         link.classList.add('active');
       } else {
         link.classList.remove('active');

@@ -161,6 +161,24 @@
     max-height: 280px;
   }
   
+  /* Map Hero & Minimap Mobile */
+  .map-hero {
+    padding: 1.5rem;
+  }
+  
+  .minimap-viewport-container {
+    height: 360px;
+  }
+  
+  .minimap-stage {
+    width: 320px;
+    height: 320px;
+  }
+  
+  .callout-directory-box {
+    max-height: 280px;
+  }
+  
   /* Footer Mobile */
   .archive-footer {
     padding: 2.5rem 0 1.5rem;
