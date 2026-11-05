@@ -42,35 +42,68 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (statRoles) statRoles.textContent = distinctRoles.size;
     if (statAbilities) statAbilities.textContent = totalAbilities;
 
-    // 2. HERO FEATURED AGENT
-    // Try to pick a visually iconic agent like Jett, Reyna, or Omen, else fallback to first
-    const preferredFeatured = ['Jett', 'Reyna', 'Omen', 'Phoenix', 'Sage'];
-    let featuredAgent = agents.find(a => preferredFeatured.includes(a.displayName) && a.fullPortrait) || agents[0];
+    // 2. HERO FEATURED AGENT — Auto-rotating carousel every 4 seconds
+    // Build rotation pool: all agents with a full portrait, ordered by preferred list first
+    const preferredNames = ['Jett', 'Reyna', 'Omen', 'Phoenix', 'Sage', 'Neon', 'Raze', 'Yoru', 'Clove', 'Iso'];
+    const withPortrait = agents.filter(a => a.fullPortrait || a.fullPortraitV2);
+    const preferred = preferredNames.map(n => withPortrait.find(a => a.displayName === n)).filter(Boolean);
+    const rest = withPortrait.filter(a => !preferredNames.includes(a.displayName));
+    const rotationPool = preferred.length >= 3 ? preferred : [...preferred, ...rest];
 
-    if (featuredAgent) {
-      const artUrl = featuredAgent.fullPortrait || featuredAgent.fullPortraitV2 || featuredAgent.displayIcon;
+    if (rotationPool.length === 0) return;
+
+    let currentIndex = 0;
+    let rotationInterval = null;
+
+    // Helper: update hero DOM for the given agent
+    const showHeroAgent = (agent) => {
+      const artUrl = agent.fullPortrait || agent.fullPortraitV2 || agent.displayIcon;
       if (heroAgentImg) {
         heroAgentImg.src = artUrl;
-        heroAgentImg.alt = featuredAgent.displayName;
-        heroAgentImg.addEventListener('click', () => {
-          window.location.href = `agent.html?uuid=${featuredAgent.uuid}`;
-        });
+        heroAgentImg.alt = agent.displayName;
       }
-      if (heroAgentBg && featuredAgent.background) {
-        heroAgentBg.src = featuredAgent.background;
+      if (heroAgentBg) {
+        heroAgentBg.src = agent.background || '';
       }
       if (heroFeaturedName) {
-        heroFeaturedName.textContent = featuredAgent.displayName;
+        heroFeaturedName.textContent = agent.displayName;
       }
-      if (heroFeaturedRole && featuredAgent.role) {
-        heroFeaturedRole.textContent = featuredAgent.role.displayName;
+      if (heroFeaturedRole && agent.role) {
+        heroFeaturedRole.textContent = agent.role.displayName;
       }
       if (heroFeaturedTag) {
         heroFeaturedTag.style.display = 'block';
-        heroFeaturedTag.addEventListener('click', () => {
-          window.location.href = `agent.html?uuid=${featuredAgent.uuid}`;
-        });
       }
+    };
+
+    // Helper: crossfade to the next agent
+    const advanceHero = () => {
+      currentIndex = (currentIndex + 1) % rotationPool.length;
+      if (!heroAgentImg) return;
+      heroAgentImg.classList.add('fading');
+      setTimeout(() => {
+        showHeroAgent(rotationPool[currentIndex]);
+        heroAgentImg.classList.remove('fading');
+      }, 400); // matches CSS transition duration
+    };
+
+    // Show first agent immediately (no fade on load)
+    showHeroAgent(rotationPool[currentIndex]);
+
+    // Start auto-rotation
+    rotationInterval = setInterval(advanceHero, 4000);
+
+    // Click handlers always use currentIndex (not a stale closure)
+    if (heroAgentImg) {
+      heroAgentImg.style.cursor = 'pointer';
+      heroAgentImg.addEventListener('click', () => {
+        window.location.href = `agent.html?uuid=${rotationPool[currentIndex].uuid}`;
+      });
+    }
+    if (heroFeaturedTag) {
+      heroFeaturedTag.addEventListener('click', () => {
+        window.location.href = `agent.html?uuid=${rotationPool[currentIndex].uuid}`;
+      });
     }
 
     // 3. FEATURED AGENTS SECTION (Display 6 playable agents)
