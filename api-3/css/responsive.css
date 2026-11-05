@@ -1,0 +1,198 @@
+/* ==========================================================================
+   VALORANT AGENT ARCHIVE - RESPONSIVE STYLES
+   Breakpoints: 360px, 390px, 430px, 768px, 1024px, 1440px
+   ========================================================================== */
+
+/* Large Desktop (> 1200px) */
+@media (min-width: 1200px) {
+  .hero-section {
+    padding: 3rem 0;
+  }
+}
+
+/* Desktop & Laptop (< 1200px) */
+@media (max-width: 1199.98px) {
+  .hero-agent-img {
+    max-height: 480px;
+  }
+  .profile-hero {
+    padding: 2.2rem;
+  }
+  .profile-hero-art {
+    max-height: 420px;
+  }
+}
+
+/* Tablet (< 992px) */
+@media (max-width: 991.98px) {
+  .hero-section {
+    min-height: auto;
+    padding: 3.5rem 0 2rem;
+  }
+  
+  .hero-artwork-container {
+    min-height: 380px;
+    margin-top: 2rem;
+  }
+  
+  .hero-agent-img {
+    max-height: 400px;
+  }
+  
+  .profile-hero {
+    padding: 2rem;
+  }
+  
+  .profile-hero-art {
+    max-height: 360px;
+    margin-top: 1.5rem;
+  }
+  
+  .compare-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .compare-table th {
+    min-width: 140px;
+  }
+  
+  .compare-table td {
+    min-width: 260px;
+  }
+}
+
+/* Mobile & Small Tablets (< 768px) */
+@media (max-width: 767.98px) {
+  html, body {
+    font-size: 14px;
+  }
+  
+  .hero-section {
+    padding: 2.5rem 0 1.5rem;
+    text-align: left;
+  }
+  
+  .hero-title-main {
+    font-size: 3rem;
+  }
+  
+  .hero-title-sub {
+    font-size: 2.4rem;
+  }
+  
+  .hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .hero-buttons .btn {
+    width: 100%;
+  }
+  
+  .hero-artwork-container {
+    min-height: 320px;
+  }
+  
+  .hero-agent-img {
+    max-height: 320px;
+  }
+  
+  .hero-featured-tag {
+    bottom: 10px;
+    right: 10px;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  /* Statistics cards on mobile */
+  .stats-section {
+    padding: 2.5rem 0;
+  }
+  
+  .stat-card {
+    padding: 1.25rem 1rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .stat-number {
+    font-size: 2.6rem;
+  }
+  
+  /* Agent Card mobile refinements */
+  .agent-card-content {
+    padding: 0.75rem;
+  }
+  
+  .agent-card-name {
+    font-size: 1.25rem;
+  }
+  
+  .role-badge {
+    font-size: 0.68rem;
+    padding: 0.2rem 0.4rem;
+  }
+  
+  .agent-card-fav-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.95rem;
+    top: 6px;
+    right: 6px;
+  }
+  
+  /* Profile Page Mobile */
+  .profile-hero {
+    padding: 1.5rem;
+  }
+  
+  .profile-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  
+  .profile-actions .btn {
+    width: 100%;
+  }
+  
+  .profile-hero-art {
+    max-height: 280px;
+  }
+  
+  /* Footer Mobile */
+  .archive-footer {
+    padding: 2.5rem 0 1.5rem;
+  }
+  
+  .toast-container-archive {
+    bottom: 12px;
+    right: 12px;
+    left: 12px;
+  }
+  
+  .toast-container-archive .toast {
+    width: 100%;
+  }
+}
+
+/* Small Mobile Screens (360px - 430px) */
+@media (max-width: 430px) {
+  .hero-title-main {
+    font-size: 2.5rem;
+  }
+  
+  .hero-title-sub {
+    font-size: 2rem;
+  }
+  
+  .role-filter-btn {
+    font-size: 0.72rem;
+    padding: 0.4rem 0.65rem;
+  }
+  
+  .ability-card {
+    padding: 1rem;
+  }
+}

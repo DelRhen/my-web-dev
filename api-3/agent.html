@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agent Profile | VALORANT Agent Archive</title>
+  <!-- Bootstrap 5.3 CSS & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Custom Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="bg-archive-primary tactical-grid-bg">
+
+  <!-- GLOBAL NAVIGATION -->
+  <nav class="navbar navbar-expand-lg archive-navbar" aria-label="Main Navigation">
+    <div class="container-fluid px-lg-5 px-3">
+      <a class="navbar-brand" href="index.html">
+        <span class="brand-accent-box"></span>
+        <span><span class="brand-v">V</span> / AGENT ARCHIVE</span>
+      </a>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#archiveNavbarOffcanvas" aria-controls="archiveNavbarOffcanvas" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Desktop Navigation Links -->
+      <div class="collapse navbar-collapse justify-content-end d-none d-lg-flex" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item">
+            <a class="nav-link archive-nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link archive-nav-link" href="agents.html">Agents</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link archive-nav-link" href="favorites.html">
+              Favorites <span class="fav-badge" style="display:none;">0</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link archive-nav-link" href="compare.html">Compare</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link archive-nav-link" href="about.html">About</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Mobile Offcanvas Menu -->
+      <div class="offcanvas offcanvas-end archive-offcanvas d-lg-none" tabindex="-1" id="archiveNavbarOffcanvas" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header border-bottom border-archive">
+          <h5 class="offcanvas-title font-heading" id="offcanvasNavbarLabel">
+            <span class="brand-v">V</span> / AGENT ARCHIVE
+          </h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item mb-2">
+              <a class="nav-link archive-nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link archive-nav-link" href="agents.html">Agents</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link archive-nav-link" href="favorites.html">
+                Favorites <span class="fav-badge" style="display:none;">0</span>
+              </a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link archive-nav-link" href="compare.html">Compare</a>
+            </li>
+            <li class="nav-item mb-2">
+              <a class="nav-link archive-nav-link" href="about.html">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- Error / Not Found Container -->
+  <div id="profileError" class="container py-5" style="display: none;"></div>
+
+  <!-- Loading Placeholder State -->
+  <div id="profileLoading" class="container py-5">
+    <div class="profile-hero skeleton-box" style="height: 480px; opacity: 0.6;"></div>
+    <div class="row g-4 mt-2">
+      <div class="col-md-3 skeleton-box" style="height: 160px;"></div>
+      <div class="col-md-3 skeleton-box" style="height: 160px;"></div>
+      <div class="col-md-3 skeleton-box" style="height: 160px;"></div>
+      <div class="col-md-3 skeleton-box" style="height: 160px;"></div>
+    </div>
+  </div>
+
+  <!-- Profile Main Content -->
+  <main id="profileContent" class="py-4" style="display: none;">
+    <div class="container-fluid px-lg-5 px-3">
+
+      <!-- SECTION 1: BREADCRUMBS -->
+      <nav class="breadcrumb-archive mb-4" aria-label="Breadcrumb">
+        <a href="index.html">HOME</a>
+        <span class="mx-2 text-archive-muted">/</span>
+        <a href="agents.html">AGENTS</a>
+        <span class="mx-2 text-archive-muted">/</span>
+        <span class="active-crumb" id="breadcrumbAgentName">...</span>
+      </nav>
+
+      <!-- SECTION 2: AGENT HERO PROFILE -->
+      <div class="profile-hero">
+        <img id="agentBackdropArt" class="profile-backdrop-img" src="" alt="" />
+        <div class="row align-items-center position-relative" style="z-index: 2;">
+          <div class="col-lg-7">
+            <div class="small text-archive-red fw-bold text-uppercase mb-2" style="letter-spacing: 2px;">
+              // AGENT PROFILE
+            </div>
+            <h1 class="profile-name" id="agentDisplayName">...</h1>
+            <div class="mb-3">
+              <span class="role-badge" id="agentRoleBadge">
+                <img src="" alt="" />
+                <span id="agentRoleName">...</span>
+              </span>
+            </div>
+            <p class="profile-desc" id="agentDescription">
+              ...
+            </p>
+            <div class="profile-actions d-flex flex-wrap gap-3">
+              <button id="favActionBtn" class="btn btn-archive-primary">
+                <i class="bi bi-heart me-2"></i> ADD TO FAVORITES
+              </button>
+              <button id="compareActionBtn" class="btn btn-archive-secondary">
+                <i class="bi bi-intersect me-2"></i> ADD TO COMPARE
+              </button>
+            </div>
+          </div>
+          <div class="col-lg-5 text-center mt-4 mt-lg-0">
+            <img id="agentArtwork" class="profile-hero-art" src="assets/img/placeholder-agent.svg" alt="Agent Artwork" />
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: AGENT INFORMATION / OVERVIEW -->
+      <section class="mb-5">
+        <h2 class="font-heading display-6 mb-3">AGENT OVERVIEW</h2>
+        <div class="row g-4">
+          <div class="col-md-6 col-12">
+            <div class="bg-archive-card p-4 border border-archive rounded h-100">
+              <div class="mb-3">
+                <small class="text-archive-muted text-uppercase fw-bold d-block" style="letter-spacing: 1px;">CODENAME / DISPLAY NAME</small>
+                <span class="fs-5 fw-bold" id="overviewName">...</span>
+              </div>
+              <div class="mb-3">
+                <small class="text-archive-muted text-uppercase fw-bold d-block" style="letter-spacing: 1px;">COMBAT ROLE</small>
+                <span class="fs-5" id="overviewRole">...</span>
+              </div>
+              <div>
+                <small class="text-archive-muted text-uppercase fw-bold d-block" style="letter-spacing: 1px;">INTERNAL DEVELOPER NAME</small>
+                <span class="text-archive-secondary" id="overviewDeveloperName">...</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-12">
+            <div class="bg-archive-card p-4 border border-archive rounded h-100">
+              <div class="mb-3">
+                <small class="text-archive-muted text-uppercase fw-bold d-block" style="letter-spacing: 1px;">CHARACTER TAGS</small>
+                <div id="overviewTags" class="mt-1">
+                  <!-- Tags injected dynamically -->
+                </div>
+              </div>
+              <div>
+                <small class="text-archive-muted text-uppercase fw-bold d-block" style="letter-spacing: 1px;">ARCHIVE IDENTIFIER</small>
+                <code class="text-archive-red small" id="overviewUuid">...</code>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: ABILITIES SHOWCASE -->
+      <section class="mb-5">
+        <div class="mb-4">
+          <h2 class="font-heading display-6 mb-1">ABILITIES</h2>
+          <p class="text-archive-secondary mb-0">
+            Explore the abilities that define this agent's playstyle. Click any ability card to view full tactical specifications.
+          </p>
+        </div>
+        <div class="row g-3 g-lg-4" id="abilitiesContainer">
+          <!-- Dynamic abilities injected by agent-profile.js -->
+        </div>
+      </section>
+
+      <!-- SECTION 5: RELATED AGENTS -->
+      <section class="mb-5 pt-4 border-top border-archive">
+        <div class="mb-4">
+          <h2 class="font-heading display-6 mb-1">EXPLORE MORE AGENTS</h2>
+          <p class="text-archive-secondary mb-0">
+            Discover other agents from the VALORANT roster.
+          </p>
+        </div>
+        <div class="row g-3 g-lg-4" id="relatedAgentsGrid">
+          <!-- Related agent cards injected here -->
+        </div>
+      </section>
+
+      <!-- SECTION 6: PROFILE NAVIGATION -->
+      <nav class="d-flex flex-wrap justify-content-between align-items-center py-4 border-top border-archive" aria-label="Agent Navigation">
+        <a id="prevAgentBtn" href="#" class="btn btn-archive-secondary mb-2 mb-md-0">
+          <i class="bi bi-arrow-left"></i> PREVIOUS AGENT
+        </a>
+        <a href="agents.html" class="btn btn-archive-outline-red mb-2 mb-md-0">
+          <i class="bi bi-grid-fill me-1"></i> BACK TO COLLECTION
+        </a>
+        <a id="nextAgentBtn" href="#" class="btn btn-archive-secondary">
+          NEXT AGENT <i class="bi bi-arrow-right"></i>
+        </a>
+      </nav>
+
+    </div>
+  </main>
+
+  <!-- ABILITY MODAL (Bootstrap 5.3 Modal) -->
+  <div class="modal fade modal-archive" id="abilityModal" tabindex="-1" aria-labelledby="modalAbilityName" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="d-flex align-items-center gap-3">
+            <div class="ability-icon-wrap mb-0" style="width: 48px; height: 48px;">
+              <img id="modalAbilityIcon" src="assets/img/placeholder-ability.svg" alt="" />
+            </div>
+            <div>
+              <span id="modalAbilitySlot" class="ability-slot-badge d-block">...</span>
+              <h4 id="modalAbilityName" class="modal-title font-heading mb-0">...</h4>
+            </div>
+          </div>
+          <button type="button" class="btn-close btn-close-white ms-auto" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p id="modalAbilityDesc" class="text-archive-secondary fs-6 mb-0" style="line-height: 1.7;">
+            ...
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-archive-secondary btn-sm" data-bs-dismiss="modal">CLOSE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 7: FOOTER -->
+  <footer class="archive-footer">
+    <div class="container-fluid px-lg-5 px-3">
+      <div class="row g-4">
+        <!-- Logo & Description -->
+        <div class="col-lg-4 col-md-6">
+          <div class="footer-logo">
+            <span class="brand-accent-box"></span>
+            <span><span class="brand-v">V</span> / AGENT ARCHIVE</span>
+          </div>
+          <p class="footer-description text-archive-secondary">
+            An interactive archive dedicated to exploring the agents of VALORANT.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col-lg-3 col-md-6">
+          <h4 class="font-heading fs-5 mb-3">QUICK LINKS</h4>
+          <ul class="footer-nav-list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="agents.html">Agents</a></li>
+            <li><a href="favorites.html">Favorites</a></li>
+            <li><a href="compare.html">Compare</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+
+        <!-- API Credit & Disclaimer -->
+        <div class="col-lg-5 col-md-12">
+          <h4 class="font-heading fs-5 mb-3">DATA & LEGAL</h4>
+          <p class="footer-disclaimer mb-2">
+            Agent information and game assets are provided by the VALORANT-API community project.
+          </p>
+          <p class="footer-disclaimer">
+            VALORANT Agent Archive is an unofficial fan-made project and is not affiliated with, endorsed by, or sponsored by Riot Games.
+          </p>
+        </div>
+      </div>
+
+      <!-- Copyright Bottom Bar -->
+      <div class="footer-bottom text-center">
+        &copy; 2026 VALORANT Agent Archive. Fan project.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap 5.3 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Application Scripts -->
+  <script src="js/storage.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/agent-profile.js"></script>
+</body>
+</html>
