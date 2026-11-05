@@ -4,6 +4,7 @@
 const Storage = (() => {
   const FAVORITES_KEY = 'valorant_archive_favorites';
   const COMPARE_KEY = 'valorant_archive_compare';
+  const COSMETIC_FAVORITES_KEY = 'valorant_archive_cosmetic_favorites';
 
   // Read array safely from localStorage
   const getArray = (key) => {
@@ -110,6 +111,59 @@ const Storage = (() => {
     clearCompare() {
       setArray(COMPARE_KEY, []);
       window.dispatchEvent(new CustomEvent('compareUpdated', { detail: { list: [] } }));
+    },
+
+    // --- COSMETIC / COLLECTION FAVORITES ---
+    getCosmeticFavorites() {
+      return getArray(COSMETIC_FAVORITES_KEY);
+    },
+
+    isCosmeticFavorite(uuid) {
+      if (!uuid) return false;
+      const favs = this.getCosmeticFavorites();
+      return favs.some(item => (typeof item === 'string' ? item : item.uuid) === uuid);
+    },
+
+    addCosmeticFavorite(item) {
+      if (!item || !item.uuid) return false;
+      let favs = this.getCosmeticFavorites();
+      if (!this.isCosmeticFavorite(item.uuid)) {
+        favs.push({
+          uuid: item.uuid,
+          type: item.type || 'item',
+          name: item.name || item.displayName || 'Cosmetic Item',
+          icon: item.icon || item.displayIcon || '',
+          extra: item.extra || ''
+        });
+        setArray(COSMETIC_FAVORITES_KEY, favs);
+        window.dispatchEvent(new CustomEvent('cosmeticFavoritesUpdated', { detail: { item, action: 'add' } }));
+        return true;
+      }
+      return false;
+    },
+
+    removeCosmeticFavorite(uuid) {
+      if (!uuid) return false;
+      let favs = this.getCosmeticFavorites();
+      const initialLen = favs.length;
+      favs = favs.filter(item => (typeof item === 'string' ? item : item.uuid) !== uuid);
+      if (favs.length !== initialLen) {
+        setArray(COSMETIC_FAVORITES_KEY, favs);
+        window.dispatchEvent(new CustomEvent('cosmeticFavoritesUpdated', { detail: { uuid, action: 'remove' } }));
+        return true;
+      }
+      return false;
+    },
+
+    toggleCosmeticFavorite(item) {
+      if (!item || !item.uuid) return false;
+      if (this.isCosmeticFavorite(item.uuid)) {
+        this.removeCosmeticFavorite(item.uuid);
+        return false;
+      } else {
+        this.addCosmeticFavorite(item);
+        return true;
+      }
     }
   };
 })();

@@ -193,6 +193,35 @@
   .toast-container-archive .toast {
     width: 100%;
   }
+
+  /* Collection Gallery Mobile */
+  .card-img-wrap {
+    max-height: 200px;
+  }
+
+  .modal-preview-img {
+    max-height: 260px;
+  }
+
+  .card-modal-img {
+    max-height: 320px;
+  }
+
+  .btn-collection-tab {
+    font-size: 0.85rem;
+    padding: 0.4rem 0.75rem;
+  }
+
+  /* Mobile pagination */
+  .pagination-archive {
+    gap: 4px;
+  }
+  .pagination-archive .page-item .page-link {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.6rem;
+    min-width: 34px;
+    height: 34px;
+  }
 }
 
 /* Small Mobile Screens (360px - 430px) */
@@ -212,5 +241,25 @@
   
   .ability-card {
     padding: 1rem;
+  }
+
+  .card-img-wrap {
+    max-height: 170px;
+  }
+
+  .btn-collection-tab {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.6rem;
+  }
+
+  .collection-item-title {
+    font-size: 0.85rem;
+  }
+
+  .pagination-archive .page-item .page-link {
+    font-size: 0.78rem;
+    padding: 0.25rem 0.45rem;
+    min-width: 30px;
+    height: 30px;
   }
 }

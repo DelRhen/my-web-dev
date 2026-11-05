@@ -9,6 +9,16 @@ const Api = (() => {
   let cachedMaps = null;
   let mapsCachePromise = null;
 
+  // Cosmetic Collection caches
+  let cachedPlayerCards = null;
+  let playerCardsPromise = null;
+  let cachedSprays = null;
+  let spraysPromise = null;
+  let cachedWeapons = null;
+  let weaponsPromise = null;
+  let cachedBuddies = null;
+  let buddiesPromise = null;
+
   return {
     /**
      * Fetch all playable agents
@@ -153,6 +163,149 @@ const Api = (() => {
         console.error(`Failed to fetch map ${uuid}:`, err);
         return { success: false, error: err.message };
       }
+    },
+
+    /**
+     * Fetch all player cards
+     * GET /playercards
+     */
+    async getPlayerCards(forceRefresh = false) {
+      if (!forceRefresh && cachedPlayerCards) {
+        return { success: true, data: cachedPlayerCards };
+      }
+      if (!forceRefresh && playerCardsPromise) {
+        return playerCardsPromise;
+      }
+
+      playerCardsPromise = (async () => {
+        try {
+          const res = await fetch(`${BASE_URL}/playercards`);
+          if (!res.ok) throw new Error(`API returned status ${res.status}`);
+          const json = await res.json();
+          if (json && Array.isArray(json.data)) {
+            const sorted = json.data.sort((a, b) => (a.displayName || '').localeCompare(b.displayName || ''));
+            cachedPlayerCards = sorted;
+            return { success: true, data: sorted };
+          } else {
+            throw new Error('Malformed player cards response');
+          }
+        } catch (err) {
+          console.error('Failed to fetch player cards:', err);
+          return { success: false, error: err.message };
+        } finally {
+          playerCardsPromise = null;
+        }
+      })();
+
+      return playerCardsPromise;
+    },
+
+    /**
+     * Fetch all sprays
+     * GET /sprays
+     */
+    async getSprays(forceRefresh = false) {
+      if (!forceRefresh && cachedSprays) {
+        return { success: true, data: cachedSprays };
+      }
+      if (!forceRefresh && spraysPromise) {
+        return spraysPromise;
+      }
+
+      spraysPromise = (async () => {
+        try {
+          const res = await fetch(`${BASE_URL}/sprays`);
+          if (!res.ok) throw new Error(`API returned status ${res.status}`);
+          const json = await res.json();
+          if (json && Array.isArray(json.data)) {
+            // Filter out null sprays (test items)
+            const valid = json.data.filter(s => !s.isNullSpray && (s.fullTransparentIcon || s.displayIcon));
+            const sorted = valid.sort((a, b) => (a.displayName || '').localeCompare(b.displayName || ''));
+            cachedSprays = sorted;
+            return { success: true, data: sorted };
+          } else {
+            throw new Error('Malformed sprays response');
+          }
+        } catch (err) {
+          console.error('Failed to fetch sprays:', err);
+          return { success: false, error: err.message };
+        } finally {
+          spraysPromise = null;
+        }
+      })();
+
+      return spraysPromise;
+    },
+
+    /**
+     * Fetch all weapons and their skins
+     * GET /weapons
+     */
+    async getWeapons(forceRefresh = false) {
+      if (!forceRefresh && cachedWeapons) {
+        return { success: true, data: cachedWeapons };
+      }
+      if (!forceRefresh && weaponsPromise) {
+        return weaponsPromise;
+      }
+
+      weaponsPromise = (async () => {
+        try {
+          const res = await fetch(`${BASE_URL}/weapons`);
+          if (!res.ok) throw new Error(`API returned status ${res.status}`);
+          const json = await res.json();
+          if (json && Array.isArray(json.data)) {
+            const sorted = json.data.sort((a, b) => (a.displayName || '').localeCompare(b.displayName || ''));
+            cachedWeapons = sorted;
+            return { success: true, data: sorted };
+          } else {
+            throw new Error('Malformed weapons response');
+          }
+        } catch (err) {
+          console.error('Failed to fetch weapons:', err);
+          return { success: false, error: err.message };
+        } finally {
+          weaponsPromise = null;
+        }
+      })();
+
+      return weaponsPromise;
+    },
+
+    /**
+     * Fetch all gun buddies
+     * GET /buddies
+     */
+    async getBuddies(forceRefresh = false) {
+      if (!forceRefresh && cachedBuddies) {
+        return { success: true, data: cachedBuddies };
+      }
+      if (!forceRefresh && buddiesPromise) {
+        return buddiesPromise;
+      }
+
+      buddiesPromise = (async () => {
+        try {
+          const res = await fetch(`${BASE_URL}/buddies`);
+          if (!res.ok) throw new Error(`API returned status ${res.status}`);
+          const json = await res.json();
+          if (json && Array.isArray(json.data)) {
+            const valid = json.data.filter(b => b.displayIcon);
+            const sorted = valid.sort((a, b) => (a.displayName || '').localeCompare(b.displayName || ''));
+            cachedBuddies = sorted;
+            return { success: true, data: sorted };
+          } else {
+            throw new Error('Malformed buddies response');
+          }
+        } catch (err) {
+          console.error('Failed to fetch buddies:', err);
+          return { success: false, error: err.message };
+        } finally {
+          buddiesPromise = null;
+        }
+      })();
+
+      return buddiesPromise;
     },
 
     /**
