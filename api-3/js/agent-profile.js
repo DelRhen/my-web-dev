@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // 2. HERO PROFILE
     if (agentDisplayName) agentDisplayName.textContent = agent.displayName;
-    if (agentDescription) agentDescription.textContent = agent.description || 'No description available for this agent.';
+    if (agentDescription) agentDescription.innerHTML = Components.formatGameText(agent.description || 'No description available for this agent.');
     
     if (agentRoleName && agent.role) {
       agentRoleName.textContent = agent.role.displayName;
@@ -230,7 +230,7 @@ document.addEventListener('DOMContentLoaded', async () => {
               </div>
               <div class="ability-slot-badge">${Components.escapeHtml(slotName)}</div>
               <h4 class="ability-name">${Components.escapeHtml(name)}</h4>
-              <p class="ability-desc-preview">${Components.escapeHtml(desc)}</p>
+              <p class="ability-desc-preview">${Components.formatGameText(desc)}</p>
             </div>
           `;
 
@@ -243,7 +243,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('modalAbilityIcon').src = iconSrc;
             document.getElementById('modalAbilitySlot').textContent = slotName;
             document.getElementById('modalAbilityName').textContent = name;
-            document.getElementById('modalAbilityDesc').textContent = desc;
+            document.getElementById('modalAbilityDesc').innerHTML = Components.formatGameText(desc);
 
             const modal = new bootstrap.Modal(modalEl);
             modal.show();

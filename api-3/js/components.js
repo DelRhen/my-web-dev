@@ -19,6 +19,33 @@ const Components = (() => {
   };
 
   /**
+   * Strip VALORANT game formatting tags like <whitebold>, <debuffred>, <teal>, </>
+   */
+  const stripGameTags = (str) => {
+    if (!str) return '';
+    return str.replace(/<[^>]+>/g, '');
+  };
+
+  /**
+   * Parse VALORANT in-game rich text markup into clean, styled HTML
+   */
+  const formatGameText = (str) => {
+    if (!str) return '';
+    // First escape standard HTML entities
+    let escaped = escapeHtml(str);
+
+    // Convert escaped VALORANT tags into styled HTML
+    escaped = escaped.replace(/&lt;whitebold&gt;(.*?)&lt;\/(?:whitebold&gt;|&gt;)/gi, '<strong class="text-white fw-bold">$1</strong>');
+    escaped = escaped.replace(/&lt;debuffred&gt;(.*?)&lt;\/(?:debuffred&gt;|&gt;)/gi, '<span class="text-archive-red fw-bold">$1</span>');
+    escaped = escaped.replace(/&lt;teal&gt;(.*?)&lt;\/(?:teal&gt;|&gt;)/gi, '<span class="text-info fw-bold" style="color:#3bd6c6 !important;">$1</span>');
+    
+    // Remove any leftover or unclosed tags
+    escaped = escaped.replace(/&lt;\/?[a-z0-9_-]+&gt;|&lt;\/&gt;/gi, '');
+
+    return escaped;
+  };
+
+  /**
    * Show a Bootstrap Toast notification
    */
   const showToast = (message, title = 'VALORANT ARCHIVE', isError = false) => {
@@ -231,6 +258,8 @@ const Components = (() => {
     PLACEHOLDER_AGENT,
     PLACEHOLDER_ABILITY,
     escapeHtml,
+    stripGameTags,
+    formatGameText,
     showToast,
     createAgentCard,
     renderSkeletonCards,

@@ -130,7 +130,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <small class="text-archive-muted ms-1">(${Components.escapeHtml(ab1.slot || '')})</small>
           </div>
         </div>
-        <p class="text-archive-secondary small mb-0">${Components.escapeHtml(ab1.description || 'No description available.')}</p>
+        <p class="text-archive-secondary small mb-0">${Components.formatGameText(ab1.description || 'No description available.')}</p>
       ` : '<span class="text-archive-muted fst-italic">No ability in this slot</span>';
 
       const ab2Content = ab2 ? `
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             <small class="text-archive-muted ms-1">(${Components.escapeHtml(ab2.slot || '')})</small>
           </div>
         </div>
-        <p class="text-archive-secondary small mb-0">${Components.escapeHtml(ab2.description || 'No description available.')}</p>
+        <p class="text-archive-secondary small mb-0">${Components.formatGameText(ab2.description || 'No description available.')}</p>
       ` : '<span class="text-archive-muted fst-italic">No ability in this slot</span>';
 
       abilityRowsHtml += `
@@ -185,8 +185,8 @@ document.addEventListener('DOMContentLoaded', async () => {
       </tr>
       <tr>
         <th>DESCRIPTION</th>
-        <td class="text-archive-secondary">${Components.escapeHtml(a1.description || 'No description available.')}</td>
-        <td class="text-archive-secondary">${Components.escapeHtml(a2.description || 'No description available.')}</td>
+        <td class="text-archive-secondary">${Components.formatGameText(a1.description || 'No description available.')}</td>
+        <td class="text-archive-secondary">${Components.formatGameText(a2.description || 'No description available.')}</td>
       </tr>
       ${abilityRowsHtml}
     `;
