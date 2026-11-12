@@ -239,9 +239,6 @@ body {
   background-color: var(--bg-alt);
 }
 
-/* ----------------------------------------------------
-   PROJECTS 2X2 GLASSMORPHISM GRID & MOTION
----------------------------------------------------- */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -274,7 +271,6 @@ body {
   flex-direction: column;
 }
 
-/* Glass Sheen Sweep Motion */
 .project-glass-card::after {
   content: "";
   position: absolute;
@@ -303,7 +299,6 @@ body {
   box-shadow: var(--glass-shadow-hover), inset 0 1px 0 rgba(255, 255, 255, 0.3);
 }
 
-/* Dynamic Interactive Cursor Glow */
 .card-glass-glow {
   position: absolute;
   inset: 0;
@@ -325,7 +320,6 @@ body {
   z-index: 3;
 }
 
-/* Card Header */
 .project-card-header {
   display: flex;
   align-items: center;
@@ -399,7 +393,6 @@ body {
   background: var(--bg-alt);
 }
 
-/* Preview Window */
 .project-preview-window {
   position: relative;
   width: 100%;
@@ -412,7 +405,6 @@ body {
   margin-bottom: 1.25rem;
 }
 
-/* Preview Image Box */
 .preview-img-box {
   width: 100%;
   height: 100%;
@@ -433,7 +425,6 @@ body {
   transform: scale(1.08);
 }
 
-/* Mini Bento Layout Preview */
 .preview-mini-bento {
   display: grid;
   grid-template-columns: 1.35fr 1fr;
@@ -469,7 +460,6 @@ body {
   transform: scale(1.1);
 }
 
-/* Preview Glass Overlay Tags */
 .preview-glass-overlay {
   position: absolute;
   bottom: 10px;
@@ -511,7 +501,6 @@ body {
   -webkit-backdrop-filter: blur(8px);
 }
 
-/* Locked Card Special Presentation */
 .locked-preview-window {
   display: flex;
   flex-direction: column;
@@ -614,7 +603,6 @@ body {
   }
 }
 
-/* Card Footer */
 .project-card-footer {
   margin-top: auto;
   display: flex;

@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // 3D Glass Tilt & Dynamic Specular Lighting Motion
   const glassCards = document.querySelectorAll('.project-glass-card[data-tilt]');
   glassCards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
@@ -91,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
 
-      // Subtle tilt angle (-5deg to +5deg)
       const rotateX = ((y - centerY) / centerY) * -5.5;
       const rotateY = ((x - centerX) / centerX) * 5.5;
 
