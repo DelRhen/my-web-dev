@@ -81,4 +81,36 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // 3D Glass Tilt & Dynamic Specular Lighting Motion
+  const glassCards = document.querySelectorAll('.project-glass-card[data-tilt]');
+  glassCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      // Subtle tilt angle (-5deg to +5deg)
+      const rotateX = ((y - centerY) / centerY) * -5.5;
+      const rotateY = ((x - centerX) / centerX) * 5.5;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) translateY(-6px)`;
+
+      const glow = card.querySelector('.card-glass-glow');
+      if (glow) {
+        glow.style.background = `radial-gradient(circle 280px at ${x}px ${y}px, rgba(255, 255, 255, 0.16), transparent 70%)`;
+        glow.style.opacity = '1';
+      }
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      const glow = card.querySelector('.card-glass-glow');
+      if (glow) {
+        glow.style.opacity = '0';
+      }
+    });
+  });
+
 });
