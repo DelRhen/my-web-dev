@@ -17,6 +17,20 @@
 }
 
 @media (max-width: 991.98px) {
+  .archive-navbar {
+    padding: 0.65rem 0;
+  }
+
+  .navbar-toggler {
+    padding: 0.4rem 0.6rem;
+    min-height: 38px;
+    min-width: 42px;
+  }
+
+  .archive-offcanvas {
+    width: min(320px, 85vw);
+  }
+
   .hero-section {
     min-height: auto;
     padding: 3rem 0 2rem;
