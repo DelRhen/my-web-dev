@@ -309,7 +309,8 @@ body {
   z-index: 2;
 }
 
-.project-card-link {
+.project-card-link,
+.project-card-inner {
   display: flex;
   flex-direction: column;
   padding: 1.6rem;
@@ -640,12 +641,119 @@ body {
   transform: translateX(6px);
 }
 
-.card-locked .project-card-link {
+.card-locked .project-card-link,
+.card-locked .project-card-inner {
   cursor: default;
 }
 
 .card-locked:hover .project-card-cta i {
   transform: none;
+}
+
+.project-title-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-title-link:hover .project-card-title {
+  color: var(--accent-hover);
+}
+
+a.project-launch-btn {
+  text-decoration: none;
+}
+
+a.project-preview-window {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.project-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tech-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: var(--glass-badge-bg);
+  border: 1px solid var(--glass-badge-border);
+  color: var(--text-muted);
+  letter-spacing: 0.2px;
+  line-height: 1.3;
+  transition: all 0.2s ease;
+}
+
+.project-glass-card:hover .tech-pill {
+  border-color: var(--glass-border-hover);
+  color: var(--text);
+}
+
+.project-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0.25rem;
+}
+
+.btn-card-action {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 7px 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-action-primary {
+  background: var(--text);
+  color: var(--bg);
+  border: 1px solid var(--text);
+}
+
+.btn-action-primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--bg);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-action-secondary {
+  background: var(--glass-badge-bg);
+  color: var(--text);
+  border: 1px solid var(--glass-badge-border);
+}
+
+.btn-action-secondary:hover {
+  background: var(--bg-alt);
+  border-color: var(--glass-border-hover);
+  color: var(--text);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-action-disabled {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px dashed var(--border);
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.btn-card-action i {
+  font-size: 0.88rem;
 }
 
 
