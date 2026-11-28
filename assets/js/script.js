@@ -111,4 +111,39 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  const previewImgs = document.querySelectorAll('.preview-img-box img, .mini-bento-item img');
+  previewImgs.forEach(img => {
+    if (img.complete) {
+      img.classList.add('loaded');
+    } else {
+      img.addEventListener('load', () => img.classList.add('loaded'));
+      img.addEventListener('error', () => img.classList.add('loaded'));
+    }
+  });
+
+  const actionButtons = document.querySelectorAll('.btn-card-action');
+  actionButtons.forEach(btn => {
+    btn.addEventListener('click', function (e) {
+      const circle = document.createElement('span');
+      const diameter = Math.max(btn.clientWidth, btn.clientHeight);
+      const radius = diameter / 2;
+      const rect = btn.getBoundingClientRect();
+
+      circle.style.width = circle.style.height = `${diameter}px`;
+      circle.style.left = `${e.clientX - rect.left - radius}px`;
+      circle.style.top = `${e.clientY - rect.top - radius}px`;
+      circle.classList.add('btn-ripple');
+
+      const existingRipple = btn.querySelector('.btn-ripple');
+      if (existingRipple) {
+        existingRipple.remove();
+      }
+
+      btn.appendChild(circle);
+      setTimeout(() => {
+        circle.remove();
+      }, 600);
+    });
+  });
+
 });
